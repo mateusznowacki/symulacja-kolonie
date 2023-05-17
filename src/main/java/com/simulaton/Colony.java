@@ -5,17 +5,18 @@ public class Colony {
     private int attackStrength;
     private int defenseStrength;
     private int economyStrength;
-    private int population;private int armySize;
+    private int population;
+    private int armySize;
     private int[][] amountOfUnits;   //[unitType][unitAmount] zloto drzewo kamien metal jedzenie
 
-    public Colony(String name, int attackStrength, int defenseStrength, int economyStrength, int population, int armySize, int[][] amountOfUnits) {
+    public Colony(String name, int attackStrength, int defenseStrength, int economyStrength, int population, int armySize) {
         this.name = name;
         this.attackStrength = attackStrength;
         this.defenseStrength = defenseStrength;
         this.economyStrength = economyStrength;
         this.population = population;
         this.armySize = armySize;
-        this.amountOfUnits = amountOfUnits;
+
     }
 
     public String getName() {

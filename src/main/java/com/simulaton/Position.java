@@ -1,13 +1,10 @@
 package com.simulaton;
 
 public class Position {
-    private int x;
-    private int y;
+    private int[][] mapPosition;
+    private String unitType;
+    private int unitAmount;
+    private String colonyName;
 
 
-    public Position(int x, int y){
-        this.x = x;
-        this.y = y;
-
-    }
 }

@@ -3,19 +3,19 @@ package com.simulaton;
 import java.util.Scanner;
 
 public class Map implements IMapSize {
-    private int mapSize[][][][];   // [x][y][surowiec][ilosc surowca ]
+    private int mapSize[][];   // [x][y][surowiec][ilosc surowca ]
 
-    public Map() { // do przemyslenia jak przechowywac to wszystko // hashmapa??
-        this.mapSize = new int[setMapSize()][setMapSize()][1][1];
-    }
+//    public Map() { // do przemyslenia jak przechowywac to wszystko // hashmapa??
+//        this.mapSize = new int[setMapSize()][setMapSize()][1][1];
+//    }
 
-    public int[][][][] getMapSize() {
-        return mapSize;
-    }
-
-    public void setMapSize(int[][][][] mapSize) {
-        this.mapSize = mapSize;
-    }
+//    public int[][] getMapSize() {
+//        return mapSize;
+//    }
+//
+//    public void setMapSize(int[][] mapSize) {
+//        this.mapSize = mapSize;
+//    }
 
     @Override
     public int setMapSize() {
