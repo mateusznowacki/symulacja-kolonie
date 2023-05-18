@@ -1,39 +1,65 @@
 package com.simulaton;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
+
+
 
 public class Map implements IMapSize {
-    private int mapSize[][];   // [x][y][surowiec][ilosc surowca ]
 
-//    public Map() { // do przemyslenia jak przechowywac to wszystko // hashmapa??
-//        this.mapSize = new int[setMapSize()][setMapSize()][1][1];
-//    }
+    private int size;
+    HashMap <int[],Resources> mapResources = new HashMap<>();
 
-//    public int[][] getMapSize() {
-//        return mapSize;
-//    }
-//
-//    public void setMapSize(int[][] mapSize) {
-//        this.mapSize = mapSize;
-//    }
+    public void fillResources(int x, int y, String nazwa, int ilosc){ // gotowa metoda do wypełniania mapy zasobami
+        int [] coordinates = {x,y};
+        Resources resources = new Resources(nazwa, ilosc);
+        mapResources.put(coordinates, resources);
+        }
+
+    public void showResourcesOnMap() {
+        for (int[] key : mapResources.keySet()) {
+            //if (Arrays.equals(key, coordinates)) {
+                System.out.println("Znaleziono zasoby na pozycji: " + key[0] + " " + key[1]);
+                System.out.println("Nazwa zasobu: " + mapResources.get(key).getResourceType());
+                System.out.println("Ilosc zasobu: " + mapResources.get(key).getResourceAmount());
+        }
+//            Object[] keys = mapResources.keySet().toArray(); // 2 wersja tej samej funkcji
+//            for (int i = 0; i < keys.length; i++) {
+//                int[] key = (int[]) keys[i];
+//                System.out.println("Znaleziono zasoby na pozycji: " + key[0] + " " + key[1]);
+//                Resources resources = mapResources.get(key);
+//                System.out.println("Nazwa zasobu: " + resources.getResourceType());
+//                System.out.println("Ilosc zasobu: " + resources.getResourceAmount());
+//            }
+    }
+    public int getResourceAmount(int x, int y) {
+        int[] coordinates = mapResources.keySet().iterator().next();
+        if (coordinates[0] == x && coordinates[1] == y) {
+            Resources resources = mapResources.get(coordinates);
+                if (resources != null) {
+                return resources.getResourceAmount();
+                }
+        }
+        return 0;
+    }
 
     @Override
-    public int setMapSize() {
-        Scanner scanner = new Scanner(System.in);
-        int size;
-        boolean uncorrectSize = true;
+        public int setMapSize () {
+            Scanner scanner = new Scanner(System.in);
+            boolean uncorrectSize = true;
 
-        do {
-            System.out.println("Podaj rozmiar mapy od 10 do 100: ");
-            size = scanner.nextInt();
-            if (size >= 10 && size <= 100) {
-                uncorrectSize = false;
+            while (uncorrectSize == true) {
+                System.out.println("Podaj rozmiar mapy od 10 do 100: ");
+                size = scanner.nextInt();
+                if ((size > 9) && (size < 101)) {
+                    uncorrectSize = false;
+                } else {
+                    System.out.println("Podano nieprawidłowy rozmiar mapy!");
+                }
             }
-            else {
-                System.out.println("Podano nieprawidłowy rozmiar mapy!");
-            }
-        } while (uncorrectSize == true);
-
-        return size;
+            return size;
+        }
     }
-}
+

@@ -4,9 +4,10 @@ public class Simulation {
 
     public void runSimulation() {
         GetColony userColony = new GetColony();
-        userColony.getUserColonyData();
-        Map map = new Map();
-        map.setMapSize();
+        //userColony.getUserColonyData();
+        Map mapa = new Map();
+
+        System.out.println(mapa.getResourceAmount(1,1));
 
     }
 }
