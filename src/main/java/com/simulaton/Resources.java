@@ -16,8 +16,9 @@ public class Resources {
         return resourceAmount;
     }
 
-    public void setResourceAmount(int resourceAmount) {
+    public Resources setResourceAmount(int resourceAmount) {
         this.resourceAmount = resourceAmount;
+        return null;
     }
 
     public Resources(String resourceType, int resourceAmount) {

@@ -1,5 +1,7 @@
 package com.simulaton;
 
+import java.util.HashMap;
+
 public class Colony {
     private String name;
     private int attackStrength;
@@ -7,7 +9,9 @@ public class Colony {
     private int economyStrength;
     private int population;
     private int armySize;
-    private int[][] amountOfUnits;   //[unitType][unitAmount] zloto drzewo kamien metal jedzenie
+
+    HashMap<String,Integer> amountOfResources = new HashMap<>();
+ //   private int[][] amountOfResources;   //[unitType][unitAmount] zloto drzewo kamien metal jedzenie
 
     public Colony(String name, int attackStrength, int defenseStrength, int economyStrength, int population, int armySize) {
         this.name = name;
@@ -17,6 +21,13 @@ public class Colony {
         this.population = population;
         this.armySize = armySize;
 
+    }
+
+    public void reciveResources(String type, Integer amount) {
+        if(amountOfResources.containsKey(type)){
+            Integer totalAmount = amountOfResources.get(type) + amount;
+            amountOfResources.replace(type,totalAmount);
+        }
     }
 
     public String getName() {
@@ -67,11 +78,11 @@ public class Colony {
         this.armySize = armySize;
     }
 
-    public int[][] getAmountOfUnits() {
-        return amountOfUnits;
-    }
-
-    public void setAmountOfUnits(int[][] amountOfUnits) {
-        this.amountOfUnits = amountOfUnits;
-    }
+//    public int[][] getAmountOfResources() {
+//        return amountOfResources;
+//    }
+//
+//    public void setAmountOfResources(int[][] amountOfResources) {
+//        this.amountOfResources = amountOfResources;
+//    }
 }

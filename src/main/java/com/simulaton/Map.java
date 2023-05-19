@@ -44,6 +44,25 @@ public class Map implements IMapSize {
         }
         return 0;
     }
+    public String getResourceType(int x, int y) {
+        int[] coordinates = mapResources.keySet().iterator().next();
+        if (coordinates[0] == x && coordinates[1] == y) {
+            Resources resources = mapResources.get(coordinates);
+                if (resources != null) {
+                return resources.getResourceType();
+                }
+        }
+        return "Brak surowcow na tej pozycji";
+    }
+
+    public void removeResources(int x, int y){
+        int[] coordinates = mapResources.keySet().iterator().next();
+        if (coordinates[0] == x && coordinates[1] == y) {
+            Resources resources = mapResources.get(coordinates);
+            mapResources.replace(coordinates,resources.setResourceAmount(0));
+        }
+
+    }
 
     @Override
         public int setMapSize () {
