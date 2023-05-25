@@ -1,15 +1,15 @@
 package com.simulaton;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Set;
 
 
+public class ColonyMap implements IMapSize {
 
-public class Map implements IMapSize {
+    public ColonyMap() {
+    }
 
-    private int size;
+    private int size = 10;
     HashMap <int[],Resources> mapResources = new HashMap<>();
 
     public void fillResources(int x, int y, String nazwa, int ilosc){ // gotowa metoda do wypełniania mapy zasobami
@@ -76,9 +76,13 @@ public class Map implements IMapSize {
                     uncorrectSize = false;
                 } else {
                     System.out.println("Podano nieprawidłowy rozmiar mapy!");
+
                 }
             }
             return size;
         }
+    public int getMapSize() {
+        return size;
+    }
     }
 
