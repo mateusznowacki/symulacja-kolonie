@@ -5,8 +5,6 @@ import java.util.Map;
 
 public class Position {
 
-    private String colonyName;
-
     HashMap <int[],String> mapPosition = new HashMap<>();
 
       public void setColonyPosition(int x, int y, String colonyName){
@@ -14,14 +12,10 @@ public class Position {
         mapPosition.put(coordinates,colonyName);
     }
 
-    public void takePosition(){
-
-    }
-
-    public void changeAlreadyTakenPosition(int x, int y , String newColonyName){
+       public void changeAlreadyTakenPosition(int x, int y , String nextColonyName){
         int[] coordinates = mapPosition.keySet().iterator().next();
         if (coordinates[0] == x && coordinates[1] == y) {
-            mapPosition.replace(coordinates,newColonyName);
+            mapPosition.replace(coordinates,nextColonyName);
             }
     }
 
@@ -29,10 +23,6 @@ public class Position {
         int [] coordinates = {x,y};
         return mapPosition.get(coordinates);
     }
-
-
-
-
 
 
 

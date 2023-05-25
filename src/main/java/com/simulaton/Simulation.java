@@ -3,11 +3,25 @@ package com.simulaton;
 public class Simulation {
 
     public void runSimulation() {
-        GetColony userColony = new GetColony();
-        userColony.getUserColonyData();
-        //Map mapa = new Map();
+        Colony userColony = new Colony();
+        Colony botColony1 = new Colony();
+        Colony botColony2 = new Colony();
 
-        //System.out.println(mapa.getResourceAmount(1,1));
+       // userColony.getUserColonyData();
+        botColony1.getBotColony();
+        botColony2.getBotColony();
 
+
+
+
+
+
+    }
+
+    public void runSum(){
+        do{
+
+
+        }while (1==1);
     }
 }

@@ -69,7 +69,7 @@ public class Map implements IMapSize {
             Scanner scanner = new Scanner(System.in);
             boolean uncorrectSize = true;
 
-            while (uncorrectSize == true) {
+            while (uncorrectSize) {
                 System.out.println("Podaj rozmiar mapy od 10 do 100: ");
                 size = scanner.nextInt();
                 if ((size > 9) && (size < 101)) {
