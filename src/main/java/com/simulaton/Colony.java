@@ -1,11 +1,9 @@
 package com.simulaton;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+
+import static com.simulaton.FileManager.collectResources;
 
 public class Colony {
     private String name;
@@ -17,8 +15,15 @@ public class Colony {
     private int checkPoint = 0;
     private int pointsToSpend;
     private int populationPointsToSpend;
+    private Map<String, Integer> resourceCounts ;
 
-    HashMap<String,Integer> amountOfResources = new HashMap<>();
+    public Map<String, Integer> getResourceCounts() {
+        return resourceCounts;
+    }
+
+    public void setResourceCounts(Map<String, Integer> resourceCounts) {
+        this.resourceCounts = resourceCounts;
+    }
 
     public Colony(String name, int attackStrength, int defenseStrength, int economyStrength, int population, int armySize) {
         this.name = name;
@@ -33,19 +38,11 @@ public class Colony {
     public Colony() {
     }
 
-    public void addResources(String type, Integer amount) {
-        if(amountOfResources.containsKey(type)){
-            Integer totalAmount = amountOfResources.get(type) + amount;
-            amountOfResources.replace(type,totalAmount);
-        }else{
-            amountOfResources.put(type,amount);
-        }
-    }
+    public void addResources(String colonyName ) {
+        resourceCounts = collectResources(colonyName);
 
-    public void reciveResources(String type, Integer amount) {
-        if(amountOfResources.containsKey(type)){
-            Integer totalAmount = amountOfResources.get(type) + amount;
-            amountOfResources.replace(type,totalAmount);
+        for (Map.Entry<String, Integer> entry : resourceCounts.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
     }
 
@@ -165,6 +162,7 @@ public class Colony {
         Random random = new Random();
 
         //random distribution of points
+        name=getBotColonyName();
         attackStrength= random.nextInt(pointsToSpend);
         pointsToSpend-=attackStrength;
         defenseStrength= random.nextInt(pointsToSpend);
@@ -173,12 +171,19 @@ public class Colony {
         population=random.nextInt(populationPointsToSpend);
         populationPointsToSpend-=population;
         armySize=populationPointsToSpend;
-        name=getBotColonyName();
         Colony botColony1 = new Colony(name, attackStrength, defenseStrength, economyStrength, population, armySize);
+
         name=getBotColonyName();
+        attackStrength= random.nextInt(pointsToSpend);
+        pointsToSpend-=attackStrength;
+        defenseStrength= random.nextInt(pointsToSpend);
+        pointsToSpend-=defenseStrength;
+        economyStrength=pointsToSpend;
+        population=random.nextInt(populationPointsToSpend);
+        populationPointsToSpend-=population;
+        armySize=populationPointsToSpend;
         Colony botColony2 = new Colony(name, attackStrength, defenseStrength, economyStrength, population, armySize);
     }
-
 
 
     public String getName() {

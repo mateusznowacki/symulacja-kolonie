@@ -1,16 +1,18 @@
 package com.simulaton;
 
-public class Resources {
-    private String resourceType ;
-    private int resourceAmount ;
 
-    public String getResourceType() {
+public class Resources {
+    private String[] resourceType ={"wood", "stone", "iron", "food"};
+
+    public String[] getResourceType() {
         return resourceType;
     }
 
-    public void setResourceType(String resourceType) {
+    public void setResourceType(String[] resourceType) {
         this.resourceType = resourceType;
     }
+
+    private int resourceAmount ;
 
     public int getResourceAmount() {
         return resourceAmount;
@@ -21,8 +23,4 @@ public class Resources {
         return null;
     }
 
-    public Resources(String resourceType, int resourceAmount) {
-        this.resourceType = resourceType;
-        this.resourceAmount = resourceAmount;
-    }
 }
