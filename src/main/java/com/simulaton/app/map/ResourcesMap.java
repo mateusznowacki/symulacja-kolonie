@@ -1,4 +1,4 @@
-package com.simulaton;
+package com.simulaton.app.map;
 
 import java.util.Scanner;
 

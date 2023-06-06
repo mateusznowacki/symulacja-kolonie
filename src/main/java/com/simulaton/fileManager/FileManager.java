@@ -1,14 +1,15 @@
-package com.simulaton;
+package com.simulaton.fileManager;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 
 public class FileManager {
 
     public void saveColonyPosition(String newColonyName, int x, int y) {
-        File file = new File("src/main/java/com/simulaton/positionDatabase.txt");
+        File file = new File("src/main/resources/positionDatabase.txt");
         try {
             RandomAccessFile pointer = new RandomAccessFile(file, "rw");
             String line;
@@ -38,8 +39,8 @@ public class FileManager {
     }
 
     public static Map<String, Integer> collectResources(String colonyName) {
-        String resourceDatabase = "src/main/java/com/simulaton/mapDatabase.txt";
-        String positionDatabase = "src/main/java/com/simulaton/positionDatabase.txt";
+        String resourceDatabase = "src/main/resources/resourcesDatabase.txt";
+        String positionDatabase = "src/main/resources/positionDatabase.txt";
         Map<String, Integer> resourceCounts = new HashMap<>();
         Map<String, String> positionMap = getPositionMap(positionDatabase);
 
@@ -66,6 +67,25 @@ public class FileManager {
         return resourceCounts;
     }
 
+    public static boolean containOtherColonies() {
+        HashSet<String> colonyNames = new HashSet<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/positionDatabase.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 3) {
+                    String colonyName = parts[2].trim();
+                    colonyNames.add(colonyName);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return colonyNames.size() > 1;
+    }
+
     public static Map<String, String> getPositionMap(String positionDatabase) {
         Map<String, String> positionMap = new HashMap<>();
 
@@ -87,9 +107,29 @@ public class FileManager {
         return positionMap;
     }
 
+    public static String findColonyByName(String colonyName) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/positionDatabase.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] colonyData = line.split(",");
+                String name = colonyData[2].trim();
+
+                if (name.equalsIgnoreCase(colonyName)) {
+                    String position = colonyData[0] + "," + colonyData[1];
+                    return position;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "null";
+
+    }
+
     public void initializePosionDatabse(int size) {
         String line;
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/java/com/simulaton/positionDatabase.txt", false))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/positionDatabase.txt", false))) {
             writer.write(""); //clears file
             for (int x = 0; x < size; x++) {
                 for (int y = 0; y < size; y++) {
@@ -108,7 +148,7 @@ public class FileManager {
         String line;
         Random random = new Random();
         int maxAmount = 15;
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/java/com/simulaton/mapDatabase.txt", false))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/resourcesDatabase.txt", false))) {
             writer.write(""); //clears file
             for (int x = 0; x < size; x++) {
                 for (int y = 0; y < size; y++) {

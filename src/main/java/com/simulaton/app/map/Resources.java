@@ -1,4 +1,4 @@
-package com.simulaton;
+package com.simulaton.app.map;
 
 
 public class Resources {
