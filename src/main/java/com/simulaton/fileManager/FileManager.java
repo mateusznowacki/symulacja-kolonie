@@ -6,7 +6,14 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 
+
 public class FileManager {
+    /**
+     *
+     * @param newColonyName
+     * @param x
+     * @param y
+     */
 
     public void saveColonyPosition(String newColonyName, int x, int y) {
         File file = new File("src/main/resources/positionDatabase.txt");
@@ -26,9 +33,8 @@ public class FileManager {
                 }
                 updatedContent.append(line).append(System.lineSeparator());
             }
-            // Dodaj nowy wpis
+
             updatedContent.append(x).append(",").append(y).append(",").append(newColonyName);
-            // Zapisz zaktualizowaną zawartość do pliku
             pointer.seek(0);
             pointer.setLength(0);
             pointer.writeBytes(updatedContent.toString());
@@ -37,6 +43,12 @@ public class FileManager {
             e.printStackTrace();
         }
     }
+
+    /**
+     *
+     * @param colonyName
+     * @return
+     */
 
     public static Map<String, Integer> collectResources(String colonyName) {
         String resourceDatabase = "src/main/resources/resourcesDatabase.txt";
@@ -67,6 +79,10 @@ public class FileManager {
         return resourceCounts;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean containOtherColonies() {
         HashSet<String> colonyNames = new HashSet<>();
 
@@ -82,9 +98,14 @@ public class FileManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return colonyNames.size() > 1;
     }
+
+    /**
+     *
+     * @param positionDatabase
+     * @return
+     */
 
     public static Map<String, String> getPositionMap(String positionDatabase) {
         Map<String, String> positionMap = new HashMap<>();
@@ -103,9 +124,14 @@ public class FileManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return positionMap;
     }
+
+    /**
+     *
+     * @param colonyName
+     * @return
+     */
 
     public static String findColonyByName(String colonyName) {
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/positionDatabase.txt"))) {
@@ -122,10 +148,13 @@ public class FileManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return "null";
-
     }
+
+    /**
+     *
+     * @param size
+     */
 
     public void initializePosionDatabse(int size) {
         String line;
@@ -143,6 +172,12 @@ public class FileManager {
             e.printStackTrace();
         }
     }
+
+    /**
+     *
+     * @param size
+     * @param resourceType
+     */
 
     public void initializeMapDatabse(int size, String[] resourceType) {
         String line;

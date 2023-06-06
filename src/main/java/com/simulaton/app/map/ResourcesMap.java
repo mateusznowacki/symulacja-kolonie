@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 
 public class ResourcesMap implements IMapSize {
+    /**
+     *
+     */
 
     private  int size;
 
@@ -11,6 +14,10 @@ public class ResourcesMap implements IMapSize {
         return size;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int setMapSize () {
         Scanner scanner = new Scanner(System.in);

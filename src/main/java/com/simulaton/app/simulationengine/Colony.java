@@ -1,7 +1,5 @@
 package com.simulaton.app.simulationengine;
 
-import com.simulaton.fileManager.FileManager;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -12,13 +10,18 @@ import java.util.Scanner;
 import static com.simulaton.fileManager.FileManager.collectResources;
 
 public class Colony {
+    /**
+     *
+     */
+
+
     private String name;
     private int attackStrength;
     private int defenseStrength;
     private int economyStrength;
     private int population;
     private int armySize;
-    private int checkPoint = 0;
+    private final int checkPoint = 0;
     private int pointsToSpend;
     private int populationPointsToSpend;
     private Map<String, Integer> resourceCounts;
@@ -27,10 +30,20 @@ public class Colony {
     public int getNumOccupiedPositions() {
         return numOccupiedPositions;
     }
+
+    /**
+     *
+     * @param numOccupiedPositions
+     */
+
     public void setNumOccupiedPositions(int numOccupiedPositions) {
         this.numOccupiedPositions += numOccupiedPositions;
     }
 
+    /**
+     *
+     * @param isWinner
+     */
     public void manageResources(boolean isWinner) {
         Random random = new Random();
         if (isWinner) {
@@ -52,22 +65,43 @@ public class Colony {
         }
     }
 
+    /**
+     *
+     * @param name
+     * @param attackStrength
+     * @param defenseStrength
+     * @param economyStrength
+     * @param population
+     * @param armySize
+     */
     public Colony(String name, int attackStrength, int defenseStrength, int economyStrength, int population, int armySize) {
+        /**
+         *
+         */
         this.name = name;
         this.attackStrength = attackStrength;
         this.defenseStrength = defenseStrength;
         this.economyStrength = economyStrength;
         this.population = population;
         this.armySize = armySize;
-
     }
 
     public Colony() {
     }
 
+    /**
+     *
+     * @param colonyName
+     */
+
     public void addResources(String colonyName) {
         resourceCounts = collectResources(colonyName);
     }
+
+    /**
+     *
+     * @return
+     */
 
     public String getBotColonyName() {
         try {
@@ -83,13 +117,17 @@ public class Colony {
             name = colonyNames.get(random.nextInt(colonyNames.size()));
             scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Plik nie został odnaleziony.");
+            System.out.println("Plik nie zostal odnaleziony.");
             e.printStackTrace();
             name = "BotColony";
         }
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     public Colony getColony() {
 
         pointsToSpend = 100;
@@ -109,26 +147,55 @@ public class Colony {
         return colony;
     }
 
+    /**
+     *
+     * @return
+     */
 
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
+
     public int getAttackStrength() {
         return attackStrength;
     }
+
+    /**
+     *
+     * @return
+     */
 
     public int getDefenseStrength() {
         return defenseStrength;
     }
 
+    /**
+     *
+     * @return
+     */
+
     public int getEconomyStrength() {
         return economyStrength;
     }
 
+    /**
+     *
+     * @return
+     */
+
     public int getPopulation() {
         return population;
     }
+
+    /**
+     *
+     * @return
+     */
 
     public int getArmySize() {
         return armySize;

@@ -7,15 +7,30 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 
+/**
+ * The type Position.
+ */
 public class Position {
+    /**
+     * The File manager.
+     */
     FileManager fileManager = new FileManager();
+
+    /**
+     * Draw colony position.
+     *
+     * @param size         the size
+     * @param firstColony  the first colony
+     * @param secondColony the second colony
+     * @param thirdColony  the third colony
+     */
     public void drawColonyPosition(int size, String firstColony,String secondColony,String thirdColony) {
 
         Random random = new Random();
         for (int i = 0; i < (((size*size/3) + (size*size%3))); i++) {
             int x = random.nextInt(size);
             int y = random.nextInt(size);
-            while (isPositionFree(x, y) == false) {
+            while (!isPositionFree(x, y)) {
                 x = random.nextInt(size);
                 y = random.nextInt(size);
             }
@@ -24,7 +39,7 @@ public class Position {
         for (int i = 0; i < ((size*size/3)); i++) {
             int x = random.nextInt(size);
             int y = random.nextInt(size);
-            while (isPositionFree(x, y) == false) {
+            while (!isPositionFree(x, y)) {
                 x = random.nextInt(size);
                 y = random.nextInt(size);
             }
@@ -32,7 +47,7 @@ public class Position {
         } for (int i = 0; i < ((size*size/3)); i++) {
             int x = random.nextInt(size);
             int y = random.nextInt(size);
-            while (isPositionFree(x, y) == false) {
+            while (!isPositionFree(x, y)) {
                 x = random.nextInt(size);
                 y = random.nextInt(size);
             }
@@ -40,7 +55,14 @@ public class Position {
         }
     }
 
-       public boolean isPositionFree(int x, int y) {
+    /**
+     * Is position free boolean.
+     *
+     * @param x the x
+     * @param y the y
+     * @return the boolean
+     */
+    public boolean isPositionFree(int x, int y) {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/positionDatabase.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -57,6 +79,4 @@ public class Position {
         }
         return false;
     }
-
-
 }
