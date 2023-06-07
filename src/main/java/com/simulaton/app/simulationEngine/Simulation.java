@@ -4,6 +4,7 @@ import com.simulaton.app.map.Position;
 import com.simulaton.app.map.Resources;
 import com.simulaton.app.map.ResourcesMap;
 import com.simulaton.fileManager.FileManager;
+
 import java.util.Random;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
@@ -40,9 +41,9 @@ public class Simulation {
         Colony secondColony = instanceColony.getColony();
         Colony thirdColony = instanceColony.getColony();
 
-        System.out.println(colorize("Pierwsza kolonia to: " + firstColony.getName(),BLUE_TEXT()));
-        System.out.println(colorize("Druga kolonia to: " + secondColony.getName(),GREEN_TEXT()));
-        System.out.println(colorize("Trzecia kolonia to: " + thirdColony.getName(),RED_TEXT()));
+        System.out.println(colorize("Pierwsza kolonia to: " + firstColony.getName(), BLUE_TEXT()));
+        System.out.println(colorize("Druga kolonia to: " + secondColony.getName(), GREEN_TEXT()));
+        System.out.println(colorize("Trzecia kolonia to: " + thirdColony.getName(), RED_TEXT()));
 
         position = new Position();
         position.drawColonyPosition(resourcesMap.getSize(), firstColony.getName(), secondColony.getName(), thirdColony.getName());
@@ -60,8 +61,8 @@ public class Simulation {
                 thirdColony.getNumOccupiedPositions() < Math.pow(resourcesMap.getSize(), 2)
         );
 
-        System.out.println(colorize("\nKoniec gry",BLUE_TEXT()));
-        System.out.println(colorize(printReults(firstColony, secondColony, thirdColony),BLUE_TEXT()));
+        System.out.println("\nKoniec gry");
+        System.out.println(printReults(firstColony, secondColony, thirdColony));
     }
 
     /**
@@ -75,13 +76,13 @@ public class Simulation {
     public String printReults(Colony firstColony, Colony secondColony, Colony thirdColony) {
         if (firstColony.getNumOccupiedPositions() > secondColony.getNumOccupiedPositions() &&
                 firstColony.getNumOccupiedPositions() > thirdColony.getNumOccupiedPositions()) {
-            return "Wygrala kolonia pierwsza " + firstColony.getName() + " pierwsza wygrywajac " + (int) Math.pow(resourcesMap.getSize(), 2) + " bitew";
+            return "Wygrala kolonia pierwsza " + colorize(firstColony.getName(), BLUE_TEXT()) + " pierwsza wygrywajac " + (int) Math.pow(resourcesMap.getSize(), 2) + " bitew";
         } else if (secondColony.getNumOccupiedPositions() > firstColony.getNumOccupiedPositions() &&
                 secondColony.getNumOccupiedPositions() > thirdColony.getNumOccupiedPositions()) {
-            return "Wygrala kolonia druga " + secondColony.getName() + " pierwsza wygrywajac " + (int) Math.pow(resourcesMap.getSize(), 2) + " bitew";
+            return "Wygrala kolonia druga " + colorize(secondColony.getName(), GREEN_TEXT()) + " pierwsza wygrywajac " + (int) Math.pow(resourcesMap.getSize(), 2) + " bitew";
         } else if (thirdColony.getNumOccupiedPositions() > firstColony.getNumOccupiedPositions() &&
                 thirdColony.getNumOccupiedPositions() > secondColony.getNumOccupiedPositions()) {
-            return "Wygrala kolonia trzecia " + thirdColony.getName() + " pierwsza wygrywajac " + (int) Math.pow(resourcesMap.getSize(), 2) + " bitew";
+            return "Wygrala kolonia trzecia " + colorize(thirdColony.getName(), RED_TEXT()) + " pierwsza wygrywajac " + (int) Math.pow(resourcesMap.getSize(), 2) + " bitew";
         }
         return "Remis";
     }
@@ -89,9 +90,9 @@ public class Simulation {
     /**
      * launches a colony battle
      *
-     * @param attackingColony   attacking colony
-     * @param defendingColony1  defending colony 1
-     * @param defendingColony2  defending colony 2
+     * @param attackingColony  attacking colony
+     * @param defendingColony1 defending colony 1
+     * @param defendingColony2 defending colony 2
      */
     public void colonyBattle(Colony attackingColony, Colony defendingColony1, Colony defendingColony2) {
 
@@ -122,7 +123,7 @@ public class Simulation {
                 defendingColonyPoints += 1;
             }
             if (attackingColonyPoints >= defendingColonyPoints) {
-                System.out.println("Kolonia " + colorize(attackingColony.getName(),GREEN_TEXT()) + " wygrala i zajela pozycje " + attackingColonyPosition);
+                System.out.println("Kolonia " + colorize(attackingColony.getName(), YELLOW_TEXT()) + " wygrala i zajela pozycje " + attackingColonyPosition);
                 String[] parts = attackingColonyPosition.split(",");
                 int x = Integer.parseInt(parts[0]);
                 int y = Integer.parseInt(parts[1]);
@@ -131,7 +132,7 @@ public class Simulation {
                 defendingColony.manageResources(false);
                 attackingColony.setNumOccupiedPositions(1);
             } else {
-                System.out.println("Kolonia " + colorize(defendingColony.getName(),GREEN_TEXT()) + " wygrala i zajela pozycje " + defendingColonyPosition);
+                System.out.println("Kolonia " + colorize(defendingColony.getName(), YELLOW_TEXT()) + " wygrala i zajela pozycje " + defendingColonyPosition);
                 String[] parts = defendingColonyPosition.split(",");
                 int x = Integer.parseInt(parts[0]);
                 int y = Integer.parseInt(parts[1]);
