@@ -1,4 +1,4 @@
-package com.simulaton.app.simulationengine;
+package com.simulaton.app.simulationEngine;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,11 +9,10 @@ import java.util.Scanner;
 
 import static com.simulaton.fileManager.FileManager.collectResources;
 
+/**
+ * Represents colony's attributes, properties, methods
+ */
 public class Colony {
-    /**
-     *
-     */
-
 
     private String name;
     private int attackStrength;
@@ -27,13 +26,17 @@ public class Colony {
     private Map<String, Integer> resourceCounts;
     private int numOccupiedPositions = 0;
 
+    /**
+     *
+     * @return the number of occupied positions
+     */
     public int getNumOccupiedPositions() {
         return numOccupiedPositions;
     }
 
     /**
      *
-     * @param numOccupiedPositions
+     * @param numOccupiedPositions number of occupied positions
      */
 
     public void setNumOccupiedPositions(int numOccupiedPositions) {
@@ -41,8 +44,9 @@ public class Colony {
     }
 
     /**
-     *
-     * @param isWinner
+     * add resources if colony won
+     * subtracts resources if colony lost
+     * @param isWinner boolean is winner
      */
     public void manageResources(boolean isWinner) {
         Random random = new Random();
@@ -66,18 +70,15 @@ public class Colony {
     }
 
     /**
-     *
-     * @param name
-     * @param attackStrength
-     * @param defenseStrength
-     * @param economyStrength
-     * @param population
-     * @param armySize
+     * colony constructor
+     * @param name colony name
+     * @param attackStrength attack strenght
+     * @param defenseStrength defense strenght
+     * @param economyStrength economy strenght
+     * @param population population size
+     * @param armySize army size
      */
     public Colony(String name, int attackStrength, int defenseStrength, int economyStrength, int population, int armySize) {
-        /**
-         *
-         */
         this.name = name;
         this.attackStrength = attackStrength;
         this.defenseStrength = defenseStrength;
@@ -86,21 +87,25 @@ public class Colony {
         this.armySize = armySize;
     }
 
+    /**
+     * colony empty constructor
+     *
+     */
     public Colony() {
     }
 
     /**
+     * add resources to colony
      *
-     * @param colonyName
+     * @param colonyName colony name
      */
-
     public void addResources(String colonyName) {
         resourceCounts = collectResources(colonyName);
     }
 
     /**
      *
-     * @return
+     * @return colony's name
      */
 
     public String getBotColonyName() {
@@ -126,7 +131,7 @@ public class Colony {
 
     /**
      *
-     * @return
+     * @return new colony's data
      */
     public Colony getColony() {
 
@@ -149,7 +154,7 @@ public class Colony {
 
     /**
      *
-     * @return
+     * @return colony name
      */
 
     public String getName() {
@@ -158,7 +163,7 @@ public class Colony {
 
     /**
      *
-     * @return
+     * @return colony attaack strenght
      */
 
     public int getAttackStrength() {
@@ -167,7 +172,7 @@ public class Colony {
 
     /**
      *
-     * @return
+     * @return colony defence strenght
      */
 
     public int getDefenseStrength() {
@@ -176,7 +181,7 @@ public class Colony {
 
     /**
      *
-     * @return
+     * @return colony defence strenght
      */
 
     public int getEconomyStrength() {
@@ -185,20 +190,17 @@ public class Colony {
 
     /**
      *
-     * @return
+     * @return colony population
      */
-
     public int getPopulation() {
         return population;
     }
 
     /**
      *
-     * @return
+     * @return army size
      */
-
     public int getArmySize() {
         return armySize;
     }
-
 }

@@ -3,20 +3,25 @@ package com.simulaton.app.map;
 import java.util.Scanner;
 
 
+/**
+ * Class responsible for size of map
+ */
 public class ResourcesMap implements IMapSize {
-    /**
-     *
-     */
+
 
     private  int size;
 
+    /**
+     *
+     * @return size of map
+     */
     public int getSize() {
         return size;
     }
 
     /**
      *
-     * @return
+     * @return size of map
      */
     @Override
     public int setMapSize () {

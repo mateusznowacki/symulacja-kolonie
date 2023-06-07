@@ -1,4 +1,4 @@
-package com.simulaton.app.simulationengine;
+package com.simulaton.app.simulationEngine;
 
 import com.simulaton.app.map.Position;
 import com.simulaton.app.map.Resources;
@@ -7,10 +7,10 @@ import com.simulaton.fileManager.FileManager;
 import java.util.Random;
 import static com.simulaton.fileManager.FileManager.findColonyByName;
 
+/**
+ * Class responsible for colonies battle
+ */
 public class Simulation {
-    /**
-     *
-     */
 
     private Colony firstColony;
     private Colony secondColony;
@@ -20,6 +20,9 @@ public class Simulation {
     private Resources resources;
     private Position position;
 
+    /**
+     * runs simulation
+     */
     public void runSimulation() {
         resourcesMap = new ResourcesMap();
         resources = new Resources();
@@ -58,6 +61,14 @@ public class Simulation {
         System.out.println(printReults(firstColony, secondColony, thirdColony));
     }
 
+    /**
+     * Print battle result
+     *
+     * @param firstColony  the first colony
+     * @param secondColony the second colony
+     * @param thirdColony  the third colony
+     * @return battle result
+     */
     public String printReults(Colony firstColony, Colony secondColony, Colony thirdColony) {
         if (firstColony.getNumOccupiedPositions() > secondColony.getNumOccupiedPositions() &&
                 firstColony.getNumOccupiedPositions() > thirdColony.getNumOccupiedPositions()) {
@@ -72,6 +83,13 @@ public class Simulation {
         return "Remis";
     }
 
+    /**
+     * launches a colony battle
+     *
+     * @param attackingColony   attacking colony
+     * @param defendingColony1  defending colony 1
+     * @param defendingColony2  defending colony 2
+     */
     public void colonyBattle(Colony attackingColony, Colony defendingColony1, Colony defendingColony2) {
 
         int attackingColonyPoints = 0;

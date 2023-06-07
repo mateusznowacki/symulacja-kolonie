@@ -7,12 +7,15 @@ import java.util.Map;
 import java.util.Random;
 
 
+/**
+ * Class responsible for managing files
+ */
 public class FileManager {
     /**
      *
-     * @param newColonyName
-     * @param x
-     * @param y
+     * @param newColonyName colony name
+     * @param x coordinate
+     * @param y coordinate
      */
 
     public void saveColonyPosition(String newColonyName, int x, int y) {
@@ -46,8 +49,8 @@ public class FileManager {
 
     /**
      *
-     * @param colonyName
-     * @return
+     * @param colonyName colony name
+     * @return type and amount of resources
      */
 
     public static Map<String, Integer> collectResources(String colonyName) {
@@ -81,30 +84,8 @@ public class FileManager {
 
     /**
      *
-     * @return
-     */
-    public static boolean containOtherColonies() {
-        HashSet<String> colonyNames = new HashSet<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/positionDatabase.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length == 3) {
-                    String colonyName = parts[2].trim();
-                    colonyNames.add(colonyName);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return colonyNames.size() > 1;
-    }
-
-    /**
-     *
-     * @param positionDatabase
-     * @return
+     * @param positionDatabase colony position database
+     * @return map of colony positions
      */
 
     public static Map<String, String> getPositionMap(String positionDatabase) {
@@ -129,8 +110,8 @@ public class FileManager {
 
     /**
      *
-     * @param colonyName
-     * @return
+     * @param colonyName colony name
+     * @return first found position of colony
      */
 
     public static String findColonyByName(String colonyName) {
@@ -152,8 +133,8 @@ public class FileManager {
     }
 
     /**
-     *
-     * @param size
+     * initialize structure of position database
+     * @param size size of map
      */
 
     public void initializePosionDatabse(int size) {
@@ -168,15 +149,15 @@ public class FileManager {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Błąd: Plik nie został odnaleziony.");
+            System.out.println("Plik nie został odnaleziony.");
             e.printStackTrace();
         }
     }
 
     /**
-     *
-     * @param size
-     * @param resourceType
+     * initialize map of resources
+     * @param size of map
+     * @param resourceType types of resources
      */
 
     public void initializeMapDatabse(int size, String[] resourceType) {
@@ -194,7 +175,7 @@ public class FileManager {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Błąd: Plik nie został odnaleziony.");
+            System.out.println("Plik nie został odnaleziony.");
             e.printStackTrace();
         }
     }

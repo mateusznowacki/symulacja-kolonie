@@ -1,9 +1,12 @@
-package com.simulaton.app.simulationengine;
+package com.simulaton.app.simulationEngine;
 
+/**
+ * Main class
+ */
 public class Main {
     /**
-     * @param args
-     * This class runs simulation
+     * @param args starting arguments
+     * runs whole simulation
      */
     public static void main(String[] args) {
 

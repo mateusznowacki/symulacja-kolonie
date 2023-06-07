@@ -1,38 +1,21 @@
 package com.simulaton.app.map;
 
 
+/**
+ * Class responsible for types of resources
+ */
 public class Resources {
+
     /**
-     *
+     *  all possible types of resources
      */
     private String[] resourceType ={"wood", "stone", "iron", "food"};
 
+    /**
+     *
+     * @return all possible types of resources
+     */
     public String[] getResourceType() {
         return resourceType;
-    }
-
-    /**
-     *
-     * @param resourceType
-     */
-    public void setResourceType(String[] resourceType) {
-        this.resourceType = resourceType;
-    }
-
-    private int resourceAmount ;
-
-    public int getResourceAmount() {
-        return resourceAmount;
-    }
-
-    /**
-     *
-     * @param resourceAmount
-     * @return
-     */
-
-    public Resources setResourceAmount(int resourceAmount) {
-        this.resourceAmount = resourceAmount;
-        return null;
     }
 }

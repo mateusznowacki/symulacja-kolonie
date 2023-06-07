@@ -8,16 +8,15 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
- * The type Position.
+ * Class responsible for colonies positions
+ * @see com.simulaton.app.simulationEngine.Colony
  */
 public class Position {
-    /**
-     * The File manager.
-     */
+
     FileManager fileManager = new FileManager();
 
     /**
-     * Draw colony position.
+     * Draw colony positions
      *
      * @param size         the size
      * @param firstColony  the first colony
@@ -56,11 +55,11 @@ public class Position {
     }
 
     /**
-     * Is position free boolean.
+     * Checks if position is free
      *
-     * @param x the x
-     * @param y the y
-     * @return the boolean
+     * @param x  x coordinate
+     * @param y  y coordinate
+     * @return true if is free else false
      */
     public boolean isPositionFree(int x, int y) {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/positionDatabase.txt"))) {
