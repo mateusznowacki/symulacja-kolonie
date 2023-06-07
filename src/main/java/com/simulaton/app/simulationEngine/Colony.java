@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import static com.simulaton.fileManager.FileManager.collectResources;
+import static com.simulaton.fileManager.PathManager.getColonyNamesDBPath;
 
 /**
  * Represents colony's attributes, properties, methods
@@ -110,7 +111,7 @@ public class Colony {
 
     public String getBotColonyName() {
         try {
-            File database = new File("src/main/resources/colonyNamesDatabase.txt");
+            File database = new File(getColonyNamesDBPath());
             Scanner scanner = new Scanner(database);
 
             ArrayList<String> colonyNames = new ArrayList<>();

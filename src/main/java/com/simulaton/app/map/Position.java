@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 
+import static com.simulaton.fileManager.PathManager.getPositionDBPath;
+
 /**
  * Class responsible for colonies positions
  * @see com.simulaton.app.simulationEngine.Colony
@@ -62,7 +64,7 @@ public class Position {
      * @return true if is free else false
      */
     public boolean isPositionFree(int x, int y) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/positionDatabase.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(getPositionDBPath()))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");

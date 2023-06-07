@@ -6,11 +6,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 
-
 /**
  * Class responsible for managing files
  */
-public class FileManager {
+public class FileManager extends PathManager {
     /**
      *
      * @param newColonyName colony name
@@ -19,7 +18,7 @@ public class FileManager {
      */
 
     public void saveColonyPosition(String newColonyName, int x, int y) {
-        File file = new File("src/main/resources/positionDatabase.txt");
+        File file = new File(getPositionDBPath());
         try {
             RandomAccessFile pointer = new RandomAccessFile(file, "rw");
             String line;
@@ -54,12 +53,11 @@ public class FileManager {
      */
 
     public static Map<String, Integer> collectResources(String colonyName) {
-        String resourceDatabase = "src/main/resources/resourcesDatabase.txt";
-        String positionDatabase = "src/main/resources/positionDatabase.txt";
-        Map<String, Integer> resourceCounts = new HashMap<>();
-        Map<String, String> positionMap = getPositionMap(positionDatabase);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(resourceDatabase))) {
+        Map<String, Integer> resourceCounts = new HashMap<>();
+        Map<String, String> positionMap = getPositionMap(getPositionDBPath());
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(getResourcesDBPath()))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -115,7 +113,7 @@ public class FileManager {
      */
 
     public static String findColonyByName(String colonyName) {
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/positionDatabase.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(getPositionDBPath()))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] colonyData = line.split(",");
@@ -139,7 +137,7 @@ public class FileManager {
 
     public void initializePosionDatabse(int size) {
         String line;
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/positionDatabase.txt", false))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(getPositionDBPath(), false))) {
             writer.write(""); //clears file
             for (int x = 0; x < size; x++) {
                 for (int y = 0; y < size; y++) {
@@ -164,7 +162,7 @@ public class FileManager {
         String line;
         Random random = new Random();
         int maxAmount = 15;
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/resourcesDatabase.txt", false))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(getResourcesDBPath(), false))) {
             writer.write(""); //clears file
             for (int x = 0; x < size; x++) {
                 for (int y = 0; y < size; y++) {
