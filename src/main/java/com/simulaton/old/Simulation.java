@@ -1,8 +1,9 @@
-package com.simulaton.app.simulationEngine;
+package com.simulaton.old;
 
-import com.simulaton.app.map.Position;
-import com.simulaton.app.map.Resources;
-import com.simulaton.app.map.ResourcesMap;
+import com.simulaton.app.colony.Colony;
+import com.simulaton.old.Position;
+import com.simulaton.old.Resources;
+import com.simulaton.old.ResourcesMap;
 import com.simulaton.fileManager.FileManager;
 
 import java.util.Random;
@@ -28,29 +29,29 @@ public class Simulation {
      * runs simulation
      */
     public void runSimulation() {
-        resourcesMap = new ResourcesMap();
-        resources = new Resources();
-        resourcesMap.setMapSize();
+//        resourcesMap = new ResourcesMap();
+//        resources = new Resources();
+//        resourcesMap.setMapSize();
+//
+//        fileManager = new FileManager();
+//        fileManager.initializePosionDatabse(resourcesMap.getSize());
+//        fileManager.initializeMapDatabse(resourcesMap.getSize(), resources.getResourceType());
 
-        fileManager = new FileManager();
-        fileManager.initializePosionDatabse(resourcesMap.getSize());
-        fileManager.initializeMapDatabse(resourcesMap.getSize(), resources.getResourceType());
+//        Colony instanceColony = new Colony();
+//        Colony firstColony = instanceColony.getColony();
+//        Colony secondColony = instanceColony.getColony();
+////        Colony thirdColony = instanceColony.getColony();
+//
+//        System.out.println(colorize("Pierwsza kolonia to: " + firstColony.getName(), BLUE_TEXT()));
+//        System.out.println(colorize("Druga kolonia to: " + secondColony.getName(), GREEN_TEXT()));
+//        System.out.println(colorize("Trzecia kolonia to: " + thirdColony.getName(), RED_TEXT()));
+//
+//        position = new Position();
+//        position.drawColonyPosition(resourcesMap.getSize(), firstColony.getName(), secondColony.getName(), thirdColony.getName());
 
-        Colony instanceColony = new Colony();
-        Colony firstColony = instanceColony.getColony();
-        Colony secondColony = instanceColony.getColony();
-        Colony thirdColony = instanceColony.getColony();
-
-        System.out.println(colorize("Pierwsza kolonia to: " + firstColony.getName(), BLUE_TEXT()));
-        System.out.println(colorize("Druga kolonia to: " + secondColony.getName(), GREEN_TEXT()));
-        System.out.println(colorize("Trzecia kolonia to: " + thirdColony.getName(), RED_TEXT()));
-
-        position = new Position();
-        position.drawColonyPosition(resourcesMap.getSize(), firstColony.getName(), secondColony.getName(), thirdColony.getName());
-
-        firstColony.addResources(firstColony.getName());
-        secondColony.addResources(secondColony.getName());
-        thirdColony.addResources(thirdColony.getName());
+//        firstColony.addResources(firstColony.getName());
+//        secondColony.addResources(secondColony.getName());
+//        thirdColony.addResources(thirdColony.getName());
 
         do {
             colonyBattle(firstColony, secondColony, thirdColony);

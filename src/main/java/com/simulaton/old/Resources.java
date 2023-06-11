@@ -1,4 +1,4 @@
-package com.simulaton.app.map;
+package com.simulaton.old;
 
 
 /**
@@ -7,12 +7,11 @@ package com.simulaton.app.map;
 public class Resources {
 
     /**
-     *  all possible types of resources
+     * all possible types of resources
      */
-    private String[] resourceType ={"wood", "stone", "iron", "food"};
+    private String[] resourceType = {"wood", "stone", "iron", "food"};
 
     /**
-     *
      * @return all possible types of resources
      */
     public String[] getResourceType() {

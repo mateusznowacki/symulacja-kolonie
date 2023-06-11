@@ -1,15 +1,37 @@
 package com.simulaton.fileManager;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Class responsible for managing files
  */
 public class FileManager extends PathManager {
+
+    public static String getBotColonyName() {
+        String name;
+        try {
+            File database = new File(getColonyNamesDBPath());
+            Scanner scanner = new Scanner(database);
+
+            ArrayList<String> colonyNames = new ArrayList<>();
+            while (scanner.hasNextLine()) {
+                String colonyName = scanner.nextLine();
+                colonyNames.add(colonyName);
+            }
+            Random random = new Random();
+            name = colonyNames.get(random.nextInt(colonyNames.size()));
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Plik nie zostal odnaleziony.");
+            e.printStackTrace();
+            name = "BotColony";
+        }
+        return name;
+    }
+
+
+
     /**
      *
      * @param newColonyName colony name

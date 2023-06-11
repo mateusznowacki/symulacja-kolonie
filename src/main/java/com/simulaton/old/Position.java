@@ -1,5 +1,6 @@
-package com.simulaton.app.map;
+package com.simulaton.old;
 
+import com.simulaton.app.colony.Colony;
 import com.simulaton.fileManager.FileManager;
 
 import java.io.BufferedReader;
@@ -11,7 +12,7 @@ import static com.simulaton.fileManager.PathManager.getPositionDBPath;
 
 /**
  * Class responsible for colonies positions
- * @see com.simulaton.app.simulationEngine.Colony
+ * @see Colony
  */
 public class Position {
 

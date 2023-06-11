@@ -10,8 +10,11 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        Simulation simulation = new Simulation();
-        simulation.runSimulation();
+//        Simulation simulation = new Simulation();
+//        simulation.runSimulation();
+
+        NSimulation simulation = new NSimulation();
+        simulation.initializeSimulationObjects();
 
     }
 }

@@ -1,4 +1,6 @@
-package com.simulaton.app.map;
+package com.simulaton.old;
+
+import com.simulaton.app.map.IMapSize;
 
 import java.util.Scanner;
 
