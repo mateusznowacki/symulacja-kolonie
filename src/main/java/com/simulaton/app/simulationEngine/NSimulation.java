@@ -31,7 +31,16 @@ public class NSimulation implements NSetSimulationParameters {
         RandomPositionAssinger positionAssinger = new RandomPositionAssinger();
         positionAssinger.distributePositionsRandomly(mapSize, positions, colonies);
 // przekazanie do klasy ktora zarzadza obecnym stanem symulacji
-        CurrentSimulationState currentSimulationState = new CurrentSimulationState(positionAssinger.getPositionsMap(), nResourcesMap.getResourcesMap(),positions);
+        CurrentSimulationState currentSimulationState = new CurrentSimulationState(positionAssinger.getPositionsMap(), nResourcesMap.getResourcesMap(),colonies);
+
+        ResourcesManager resourcesManager = new ResourcesManager();
+
+        currentSimulationState.updateColonies(resourcesManager.addResources(currentSimulationState.getResourcesMap(),currentSimulationState.getPositionsMap()));
+
+
+        System.out.println(currentSimulationState.getColonies().get(1).getResourceCounts() + currentSimulationState.getColonies().get(1).getName());
+        System.out.println(currentSimulationState.getColonies().get(2).getResourceCounts()+currentSimulationState.getColonies().get(2).getName());
+        System.out.println(currentSimulationState.getColonies().get(3).getResourceCounts()+currentSimulationState.getColonies().get(3).getName());
 
 
     }

@@ -6,17 +6,24 @@ import com.simulaton.app.map.NResources;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
-public class CurrentSimulationState{
-    private ArrayList<NPosition> positions;
+public class CurrentSimulationState {
+
     private HashMap<NPosition, Colony> positionsMap;
     private HashMap<NPosition, NResources> resourcesMap;
+    private ArrayList<Colony> colonies;
+    public ArrayList<Colony> getColonies() {
+        return colonies;
+    }
 
-    public CurrentSimulationState(HashMap<NPosition, Colony> positionsMap, HashMap<NPosition, NResources> resourcesMap, ArrayList<NPosition> positions) {
+    public void updateColonies(ArrayList<Colony> colonies) {
+        this.colonies = colonies;
+    }
+
+    public CurrentSimulationState(HashMap<NPosition, Colony> positionsMap, HashMap<NPosition, NResources> resourcesMap, ArrayList<Colony> colonies) {
         this.positionsMap = positionsMap;
         this.resourcesMap = resourcesMap;
-        this.positions = positions;
+        this.colonies = colonies;
     }
 
     public HashMap<NPosition, Colony> getPositionsMap() {

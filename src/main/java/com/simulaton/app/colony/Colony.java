@@ -20,7 +20,16 @@ public class Colony {
     private int economyStrength;
     private int population;
     private int armySize;
-    private Map<NResources,Integer> resourceCounts;
+
+    public HashMap<NResources, Integer> getResourceCounts() {
+        return resourceCounts;
+    }
+
+    public void setResourceCounts(HashMap<NResources, Integer> resourceCounts) {
+        this.resourceCounts = resourceCounts;
+    }
+
+    private HashMap<NResources,Integer> resourceCounts;
     private int numOccupiedPositions = 0;
 
     /**
@@ -39,14 +48,6 @@ public class Colony {
     public void setNumOccupiedPositions(int numOccupiedPositions) {
         this.numOccupiedPositions += numOccupiedPositions;
     }
-
-   public void addResources(HashMap<NPosition, NResources> resourcesMap,HashMap<NPosition, Colony> positionsMap){
-     // do zrobienia
-
-   }
-
-
-
 
 
 
@@ -68,6 +69,7 @@ public class Colony {
         this.economyStrength = economyStrength;
         this.population = population;
         this.armySize = armySize;
+        resourceCounts = new HashMap<>();
     }
 
 

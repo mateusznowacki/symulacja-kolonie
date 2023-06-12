@@ -26,6 +26,13 @@ public class NResourcesMap {
     }
 
     @Override
+    public String toString() {
+        return "NResourcesMap{" +
+                "resourcesMap=" + resourcesMap +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
