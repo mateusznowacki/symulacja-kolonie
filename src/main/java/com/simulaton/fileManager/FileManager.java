@@ -19,7 +19,7 @@ public class FileManager extends PathManager {
                 String colonyName = scanner.nextLine();
                 colonyNames.add(colonyName);
             }
-            Random random = new Random();
+            Random random = new Random(System.currentTimeMillis());
             name = colonyNames.get(random.nextInt(colonyNames.size()));
             scanner.close();
         } catch (FileNotFoundException e) {

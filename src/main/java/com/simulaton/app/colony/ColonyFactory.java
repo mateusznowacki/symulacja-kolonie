@@ -1,11 +1,10 @@
 package com.simulaton.app.colony;
 
-import java.util.Map;
 import java.util.Random;
 
 import static com.simulaton.fileManager.FileManager.getBotColonyName;
 
-public class NColonyFactory {
+public class ColonyFactory {
     public Colony createColony() {
          String name;
          int attackStrength;
@@ -13,11 +12,8 @@ public class NColonyFactory {
          int economyStrength;
          int population;
          int armySize;
-//         final int checkPoint = 0;
          int pointsToSpend;
          int populationPointsToSpend;
-//         Map<String, Integer> resourceCounts;
-//         int numOccupiedPositions = 0;
 
         pointsToSpend = 100;
         populationPointsToSpend = 100;

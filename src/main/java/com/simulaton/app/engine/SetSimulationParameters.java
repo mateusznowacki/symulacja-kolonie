@@ -1,10 +1,10 @@
-package com.simulaton.app.map;
+package com.simulaton.app.engine;
 
 
 /**
  * Sets simulation parameters.
  */
-public interface NSetSimulationParameters {
+public interface SetSimulationParameters {
 
     public int setMapSize();
 

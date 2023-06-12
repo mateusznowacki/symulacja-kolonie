@@ -1,4 +1,4 @@
-package com.simulaton.app.map;
+package com.simulaton.app.map.position;
 
 import java.util.Objects;
 
@@ -6,11 +6,11 @@ import java.util.Objects;
  * Class Position
  */
 
-public class NPosition {
+public class Position {
     private int x;
     private int y;
 
-    public NPosition(int x, int y) {
+    public Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -35,8 +35,8 @@ public class NPosition {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        NPosition nPosition = (NPosition) o;
-        return x == nPosition.x && y == nPosition.y;
+        Position position = (Position) o;
+        return x == position.x && y == position.y;
     }
 
     @Override

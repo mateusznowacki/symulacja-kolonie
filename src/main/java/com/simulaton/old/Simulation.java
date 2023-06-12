@@ -73,7 +73,7 @@
 //     * @param secondColony the second colony
 //     * @param thirdColony  the third colony
 //     * @return battle result
-//     */
+////     */}
 //    public String printReults(Colony firstColony, Colony secondColony, Colony thirdColony) {
 //        if (firstColony.getNumOccupiedPositions() > secondColony.getNumOccupiedPositions() &&
 //                firstColony.getNumOccupiedPositions() > thirdColony.getNumOccupiedPositions()) {
@@ -87,7 +87,7 @@
 //        }
 //        return "Remis";
 //    }
-//
+
 //    /**
 //     * launches a colony battle
 //     *
@@ -142,6 +142,6 @@
 //                attackingColony.manageResources(false);
 //                defendingColony.setNumOccupiedPositions(1);
 //            }
-//        }
-//    }
+////        }
+////    }
 //}

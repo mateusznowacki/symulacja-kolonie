@@ -1,4 +1,4 @@
-package com.simulaton.app.map;
+package com.simulaton.old;
 
 /**
  * Interface Map size.

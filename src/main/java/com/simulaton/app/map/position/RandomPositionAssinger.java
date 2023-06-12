@@ -1,4 +1,4 @@
-package com.simulaton.app.map;
+package com.simulaton.app.map.position;
 
 import com.simulaton.app.colony.Colony;
 
@@ -8,9 +8,9 @@ import java.util.Objects;
 import java.util.Random;
 
 public class RandomPositionAssinger {
-    private HashMap<NPosition, Colony> positionsMap = new HashMap<>();
+    private HashMap<Position, Colony> positionsMap = new HashMap<>();
 
-    public HashMap<NPosition, Colony> distributePositionsRandomly(int mapSize, ArrayList<NPosition> positions, ArrayList<Colony> colonies ) {
+    public HashMap<Position, Colony> distributePositionsRandomly(int mapSize, ArrayList<Position> positions, ArrayList<Colony> colonies ) {
         Random random = new Random();
         for (int i = 0; i < Math.pow(mapSize, 2); i++) {
         positionsMap.put(positions.get(i),colonies.get(random.nextInt(colonies.size())));
@@ -31,7 +31,7 @@ public class RandomPositionAssinger {
         return Objects.hash(positionsMap);
     }
 
-    public HashMap<NPosition, Colony> getPositionsMap() {
+    public HashMap<Position, Colony> getPositionsMap() {
         return positionsMap;
     }
 }
