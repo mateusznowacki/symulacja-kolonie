@@ -1,34 +1,39 @@
 package com.simulaton.app.colony;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-import static com.simulaton.fileManager.FileManager.getBotColonyName;
+import static com.simulaton.filereader.FileReader.getBotColonyName;
+
 
 public class ColonyFactory {
-    public Colony createColony() {
-         String name;
-         int attackStrength;
-         int defenseStrength;
-         int economyStrength;
-         int population;
-         int armySize;
-         int pointsToSpend;
-         int populationPointsToSpend;
+    public ArrayList<Colony> createColony(int numberofColonies) {
+        String name;
+        int attackStrength;
+        int defenseStrength;
+        int economyStrength;
+        int population;
+        int armySize;
+        int pointsToSpend;
+        int populationPointsToSpend;
+        ArrayList<Colony> colonies = new ArrayList<>();
 
-        pointsToSpend = 100;
-        populationPointsToSpend = 100;
-        Random random = new Random();
-        name = getBotColonyName();
-        attackStrength = random.nextInt(pointsToSpend);
-        pointsToSpend -= attackStrength;
-        defenseStrength = random.nextInt(pointsToSpend);
-        pointsToSpend -= defenseStrength;
-        economyStrength = pointsToSpend;
-        population = random.nextInt(populationPointsToSpend);
-        populationPointsToSpend -= population;
-        armySize = populationPointsToSpend;
-
-        Colony colony = new Colony(name, attackStrength, defenseStrength, economyStrength, population, armySize);
-        return colony;
+        for (int i = 0; i < numberofColonies; i++) {
+            pointsToSpend = 100;
+            populationPointsToSpend = 100;
+            Random random = new Random();
+            name = getBotColonyName();
+            attackStrength = random.nextInt(pointsToSpend);
+            pointsToSpend -= attackStrength;
+            defenseStrength = random.nextInt(pointsToSpend);
+            pointsToSpend -= defenseStrength;
+            economyStrength = pointsToSpend;
+            population = random.nextInt(populationPointsToSpend);
+            populationPointsToSpend -= population;
+            armySize = populationPointsToSpend;
+            Colony colony = new Colony(name, attackStrength, defenseStrength, economyStrength, population, armySize);
+            colonies.add(colony);
+        }
+        return colonies;
     }
 }

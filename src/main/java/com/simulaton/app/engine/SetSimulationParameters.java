@@ -7,8 +7,9 @@ package com.simulaton.app.engine;
 public interface SetSimulationParameters {
 
     public int setMapSize();
-
     public int setNumberOfColonies();
+    public int setNumberOfIterations();
+
 
 
 }

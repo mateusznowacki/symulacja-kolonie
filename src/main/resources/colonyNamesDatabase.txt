@@ -19,103 +19,102 @@ Promieniste Miasto
 Kosmiczne Miasto
 Zalane Serwery
 Zraszacze w Serwerowni
-Phoenix Colony
-Stellar Colony
-Nebula Colony
-Astral Colony
-Galactic Colony
-Solar Colony
-Lunar Colony
-Celestial Colony
-Orion Colony
-Nova Colony
-Comet Colony
-Aurora Colony
-Saturn Colony
-Jupiter Colony
-Mercury Colony
-Venus Colony
-Earth Colony
-Mars Colony
-Titan Colony
-Europa Colony
-Io Colony
-Ganymede Colony
-Callisto Colony
-Triton Colony
-Charon Colony
-Pluto Colony
-Neptune Colony
-Uranus Colony
-Saturnalia Colony
-Mars One Colony
-Frontier Colony
-Pioneers Colony
-Discovery Colony
-Exploration Colony
-New Horizon Colony
-Odyssey Colony
-Expedition Colony
-Vanguard Colony
-Destiny Colony
-Phoenix Rising Colony
-Alpha Centauri Colony
-Proxima Colony
-Polaris Colony
-Antares Colony
-Betelgeuse Colony
-Sirius Colony
-Regulus Colony
-Lyra Colony
-Andromeda Colony
-Perseus Colony
-Cassiopeia Colony
-Ursa Colony
-Leo Colony
-Virgo Colony
-Libra Colony
-Scorpio Colony
-Sagittarius Colony
-Capricorn Colony
-Aquarius Colony
-Pisces Colony
-Aries Colony
-Taurus Colony
-Gemini Colony
-Cancer Colony
-Leo Minor Colony
-Hydra Colony
-Draco Colony
-Pegasus Colony
-Ophiuchus Colony
-Canis Colony
-Crux Colony
-Columba Colony
-Phoenix II Colony
-Carina Colony
-Fornax Colony
-Norma Colony
-Volans Colony
-Ara Colony
-Horologium Colony
-Chamaeleon Colony
-Delphinus Colony
-Dorado Colony
-Eridanus Colony
-Apus Colony
-Corona Colony
-Reticulum Colony
-Telescopium Colony
-Microscopium Colony
-Indus Colony
-Octans Colony
-Pavonis Colony
-Rhea Colony
-Umbriel Colony
-Phobos Colony
-Deimos Colony
-Ceres Colony
-Vesta Colony
-Juno Colony
-Eros Colony
-Pallas Colony
+Phoenix
+Stellar
+Nebula
+Astral
+Galactic
+Solar
+Lunar
+Celestial
+Orion
+Nova
+Comet
+Aurora
+Saturn
+Jupiter
+Mercury
+Venus
+Earth
+Mars
+Titan
+Europa
+Io
+Ganymede
+Callisto
+Triton
+Charon
+Pluto
+Neptune
+Uranus
+Saturnalia
+Mars One
+Frontier
+Pioneers
+Discovery
+Exploration
+New Horizon
+Odyssey
+Expedition
+Vanguard
+Destiny
+Phoenix Rising
+Alpha Centauri
+Proxima
+Polaris
+Antares
+Betelgeuse
+Sirius
+Regulus
+Lyra
+Andromeda
+Perseus
+Cassiopeia
+Ursa
+Leo
+Virgo
+Libra
+Scorpio
+Sagittarius
+Capricorn
+Aquarius
+Pisces
+Aries
+Taurus
+Gemini
+Cancer
+Leo Minor
+Hydra
+Draco
+Pegasus
+Ophiuchus
+Canis
+Crux
+Columba
+Phoenix II
+Carina
+Fornax
+Norma
+Volans
+Ara
+Horologium
+Chamaeleon
+Delphinus
+Dorado
+Eridanus
+Corona
+Reticulum
+Telescopium
+Microscopium
+Indus
+Octans
+Pavonis
+Rhea
+Umbriel
+Phobos
+Deimos
+Ceres
+Vesta
+Juno
+Eros
+Pallas

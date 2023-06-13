@@ -47,7 +47,7 @@ public class ResourcesManager {
                 updatedColonies.add(colony);
 
 
-                System.out.println("Zaktualizowano surowiec w kolonii: " + colony.getName() + " " + resource + ", ilosc: " + resourceCount);
+              //  System.out.println("Zaktualizowano surowiec w kolonii: " + colony.getName() + " " + resource + ", ilosc: " + resourceCount);
             }
         }
 

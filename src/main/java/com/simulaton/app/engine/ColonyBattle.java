@@ -3,6 +3,7 @@ package com.simulaton.app.engine;
 import com.diogonunes.jcolor.Attribute;
 import com.simulaton.app.colony.Colony;
 import com.simulaton.app.map.position.Position;
+import com.simulaton.app.map.resources.ResourcesManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,15 +18,12 @@ public class ColonyBattle {
     public CurrentSimulationState colonyBattle(HashMap<Position, Colony> positionsMap, ArrayList<Colony> colonies) {
         ArrayList<Colony> fightingColonies;
         ArrayList<Position> fightingColoniesPositions;
-
         CurrentSimulationState currentState;
-
 
         fightingColonies = pickFightingColonies(colonies);
         fightingColoniesPositions = findFightingColoniesPositions(fightingColonies, positionsMap);
 
         currentState = fightBetweenColonies(fightingColonies, fightingColoniesPositions, positionsMap, colonies);
-
         printBattleResults(winningColony, losingColony);
 
         return currentState;
@@ -72,6 +70,7 @@ public class ColonyBattle {
         Position attackingColonyPosition = positions.get(0);
         Position defendingColonyPosition = positions.get(1);
         CurrentSimulationState currentState = new CurrentSimulationState();
+        ResourcesManager resourcesManager = new ResourcesManager();
 
         if ((attackingColony.getArmySize() * attackingColony.getAttackStrength()) >= (defendingColony.getArmySize() * defendingColony.getDefenseStrength())) {
             attackingColonyPoints += 1;
@@ -94,8 +93,11 @@ public class ColonyBattle {
         if (attackingColonyPoints >= defendingColonyPoints) {
             positionsMap.put(defendingColonyPosition, attackingColony);
             attackingColony.setBattleWins(attackingColony.getBattleWins() + 1);
+            currentState.setColonies(resourcesManager.reciveResources(colonies,attackingColony));
+            currentState.setColonies(resourcesManager.spendResources(colonies,defendingColony));
             winningColony = attackingColony;
             losingColony = defendingColony;
+
             for (int i = 0; i < colonies.size(); i++) {
                 if (colonies.get(i).getName().equals(attackingColony.getName())) {
                     colonies.remove(i);
@@ -109,6 +111,8 @@ public class ColonyBattle {
         } else {
             positionsMap.put(attackingColonyPosition, defendingColony);
             defendingColony.setBattleWins(defendingColony.getBattleWins() + 1);
+            currentState.setColonies(resourcesManager.reciveResources(colonies,defendingColony));
+            currentState.setColonies(resourcesManager.spendResources(colonies,attackingColony));
             winningColony = defendingColony;
             losingColony = attackingColony;
 
@@ -129,6 +133,5 @@ public class ColonyBattle {
                 colorize(String.valueOf(winningColony.getBattleWins()), Attribute.TEXT_COLOR(90, 225, 22)) + " zwyciestw, pokonujac kolonie " +
                 colorize(losingColony.getName(), Attribute.TEXT_COLOR(218, 45, 45)));
     }
-
 
 }

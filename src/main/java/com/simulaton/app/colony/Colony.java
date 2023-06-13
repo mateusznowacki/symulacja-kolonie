@@ -15,6 +15,8 @@ public class Colony extends Unit {
     private int economyStrength;
     private HashMap<ResourceTypes, Integer> resourceCounts;
 
+
+
     public int getBattleWins() {
         return battleWins;
     }
