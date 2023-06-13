@@ -1,3 +1,3 @@
 com.simulaton.app.map
-com.simulaton.app.simulationEngine
-com.simulaton.fileManager
+com.simulaton.app.engine
+com.simulaton.filereader
