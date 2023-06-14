@@ -10,11 +10,11 @@ import java.util.HashMap;
  */
 public class Colony extends Unit {
 
-    private int attackStrength;
-    private int defenseStrength;
-    private int economyStrength;
-    private HashMap<ResourceTypes, Integer> resourceCounts;
-
+    private final int attackStrength;
+    private final int defenseStrength;
+    private final int economyStrength;
+    private int battleWins = 0;
+    private final HashMap<ResourceTypes, Integer> resourceCounts;
 
     /**
      * Gets battle wins.
@@ -34,8 +34,6 @@ public class Colony extends Unit {
         this.battleWins = battleWins;
     }
 
-    private int battleWins = 0;
-
     /**
      * Gets resource counts.
      *
@@ -44,7 +42,6 @@ public class Colony extends Unit {
     public HashMap<ResourceTypes, Integer> getResourceCounts() {
         return resourceCounts;
     }
-
 
     /**
      * Instantiates a new Colony.
@@ -91,5 +88,4 @@ public class Colony extends Unit {
     public int getEconomyStrength() {
         return economyStrength;
     }
-
 }

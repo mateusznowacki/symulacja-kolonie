@@ -6,8 +6,8 @@ import java.util.Objects;
  * The type Position.
  */
 public class Position {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     /**
      * Instantiates a new Position.

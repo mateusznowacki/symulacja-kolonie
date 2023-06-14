@@ -11,22 +11,21 @@ public interface SetSimulationParameters {
      *
      * @return the map size
      */
-     int setMapSize();
+    int setMapSize();
 
     /**
      * Sets number of colonies.
      *
      * @return the number of colonies
      */
-     int setNumberOfColonies();
+    int setNumberOfColonies();
 
     /**
      * Sets number of iterations.
      *
      * @return the number of iterations
      */
-     int setNumberOfIterations();
-
+    int setNumberOfIterations();
 
 
 }

@@ -1,6 +1,5 @@
 package com.simulaton.app.map.position;
 
-
 import java.util.ArrayList;
 
 /**

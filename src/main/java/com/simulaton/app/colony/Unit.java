@@ -6,9 +6,9 @@ import java.util.Objects;
  * The type Unit.
  */
 public abstract class Unit {
-    private String name;
-    private int population;
-    private int armySize;
+    private final String name;
+    private final int population;
+    private final int armySize;
 
     /**
      * Gets name.

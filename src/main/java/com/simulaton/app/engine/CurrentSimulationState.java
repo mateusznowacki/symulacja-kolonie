@@ -108,5 +108,4 @@ public class CurrentSimulationState {
         this.resourcesMap = resourcesMap;
     }
 
-
 }

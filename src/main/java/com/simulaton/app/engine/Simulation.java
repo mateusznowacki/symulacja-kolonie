@@ -35,31 +35,24 @@ public class Simulation implements SetSimulationParameters {
         numberOfColonies = setNumberOfColonies();
         numberOfIterations = setNumberOfIterations();
 
-        // lista pozycji
         PositionFactory factory = new PositionFactory();
         ArrayList<Position> positions = factory.createPositions(mapSize);
         currentSimulationState.setPositions(positions);
 
-        // surowce z przypisaniem
         ResourcesMap resourcesMap = new ResourcesMap();
         resourcesMap.distributeResourcesRandomly(mapSize, currentSimulationState.getPositions());
         currentSimulationState.setResourcesMap(resourcesMap.getResourcesMap());
 
-        // tworzenie kolonii
         ColonyFactory colonyFactory = new ColonyFactory();
         currentSimulationState.setColonies(colonyFactory.createColony(numberOfColonies));
 
-        // przypisanie pozycji
         RandomPositionAssinger positionAssinger = new RandomPositionAssinger();
         positionAssinger.distributePositionsRandomly(mapSize, currentSimulationState.getPositions(), currentSimulationState.getColonies());
         currentSimulationState.setPositionsMap(positionAssinger.getPositionsMap());
 
-// collectiong resources
-
         ResourcesManager resourcesManager = new ResourcesManager();
         resourcesManager.addResources(currentSimulationState.getResourcesMap(), currentSimulationState.getPositionsMap());
         currentSimulationState.setColonies(resourcesManager.getUpdatedColonies());
-
     }
 
     /**
@@ -94,7 +87,6 @@ public class Simulation implements SetSimulationParameters {
                 + " wygrywajac razem " + colorize(String.valueOf(winnerColony.getBattleWins()), Attribute.TEXT_COLOR(90, 225, 22)) + " bitw z " +
                 colorize(String.valueOf(numberOfIterations), Attribute.TEXT_COLOR(90, 225, 22)));
     }
-
 
     @Override
     public int setMapSize() {

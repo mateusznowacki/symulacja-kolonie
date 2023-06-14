@@ -11,7 +11,7 @@ import java.util.Random;
  * The type Random position assinger.
  */
 public class RandomPositionAssinger {
-    private HashMap<Position, Colony> positionsMap = new HashMap<>();
+    private final HashMap<Position, Colony> positionsMap = new HashMap<>();
 
     /**
      * Distribute positions randomly hash map.
@@ -21,10 +21,10 @@ public class RandomPositionAssinger {
      * @param colonies  the colonies
      * @return the hash map
      */
-    public HashMap<Position, Colony> distributePositionsRandomly(int mapSize, ArrayList<Position> positions, ArrayList<Colony> colonies ) {
+    public HashMap<Position, Colony> distributePositionsRandomly(int mapSize, ArrayList<Position> positions, ArrayList<Colony> colonies) {
         Random random = new Random();
         for (int i = 0; i < Math.pow(mapSize, 2); i++) {
-        positionsMap.put(positions.get(i),colonies.get(random.nextInt(colonies.size())));
+            positionsMap.put(positions.get(i), colonies.get(random.nextInt(colonies.size())));
         }
         return positionsMap;
     }

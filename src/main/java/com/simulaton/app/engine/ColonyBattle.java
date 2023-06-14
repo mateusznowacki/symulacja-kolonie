@@ -104,8 +104,8 @@ public class ColonyBattle {
         if (attackingColonyPoints >= defendingColonyPoints) {
             positionsMap.put(defendingColonyPosition, attackingColony);
             attackingColony.setBattleWins(attackingColony.getBattleWins() + 1);
-            currentState.setColonies(resourcesManager.reciveResources(colonies,attackingColony));
-            currentState.setColonies(resourcesManager.spendResources(colonies,defendingColony));
+            currentState.setColonies(ResourcesManager.reciveResources(colonies, attackingColony));
+            currentState.setColonies(ResourcesManager.spendResources(colonies, defendingColony));
             winningColony = attackingColony;
             losingColony = defendingColony;
 
@@ -122,8 +122,8 @@ public class ColonyBattle {
         } else {
             positionsMap.put(attackingColonyPosition, defendingColony);
             defendingColony.setBattleWins(defendingColony.getBattleWins() + 1);
-            currentState.setColonies(resourcesManager.reciveResources(colonies,defendingColony));
-            currentState.setColonies(resourcesManager.spendResources(colonies,attackingColony));
+            currentState.setColonies(ResourcesManager.reciveResources(colonies, defendingColony));
+            currentState.setColonies(ResourcesManager.spendResources(colonies, attackingColony));
             winningColony = defendingColony;
             losingColony = attackingColony;
 
