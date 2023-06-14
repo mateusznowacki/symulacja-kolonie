@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.simulaton.app.map"},{"l":"com.simulaton.app.simulationEngine"},{"l":"com.simulaton.fileManager"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.simulaton.app.colony"},{"l":"com.simulaton.app.engine"},{"l":"com.simulaton.app.map.position"},{"l":"com.simulaton.app.map.resources"},{"l":"com.simulaton.filereader"}];updateSearchResults();

@@ -1,15 +1,15 @@
 package com.simulaton.app.engine;
 
 /**
- * Main class
+ * The type Main.
  */
 public class Main {
     /**
-     * @param args starting arguments
-     * initializes simulation objects and runs the simulation
+     * The entry point of application.
+     *
+     * @param args the input arguments
      */
     public static void main(String[] args) {
-
 
         Simulation simulation = new Simulation();
         simulation.initializeSimulationObjects();

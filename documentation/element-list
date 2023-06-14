@@ -1,3 +1,5 @@
-com.simulaton.app.map
+com.simulaton.app.colony
 com.simulaton.app.engine
+com.simulaton.app.map.position
+com.simulaton.app.map.resources
 com.simulaton.filereader

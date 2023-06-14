@@ -7,10 +7,15 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Class responsible for managing files
+ * The type File reader.
  */
 public class FileReader {
 
+    /**
+     * Gets bot colony name.
+     *
+     * @return the bot colony name
+     */
     public static String getBotColonyName() {
         String name;
         try {

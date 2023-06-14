@@ -7,9 +7,19 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * The type Resources map.
+ */
 public class ResourcesMap {
     private HashMap<Position, ResourceTypes> resourcesMap = new HashMap<>();
 
+    /**
+     * Distribute resources randomly hash map.
+     *
+     * @param mapSize   the map size
+     * @param positions the positions
+     * @return the hash map
+     */
     public HashMap<Position, ResourceTypes> distributeResourcesRandomly(int mapSize, ArrayList<Position> positions) {
         Random random = new Random();
         ResourceTypes[] resources = ResourceTypes.values();
@@ -19,10 +29,11 @@ public class ResourcesMap {
         return resourcesMap;
     }
 
-    public void setResourcesMap(HashMap<Position, ResourceTypes> resourcesMap) {
-        this.resourcesMap = resourcesMap;
-    }
-
+    /**
+     * Gets resources map.
+     *
+     * @return the resources map
+     */
     public HashMap<Position, ResourceTypes> getResourcesMap() {
         return resourcesMap;
     }

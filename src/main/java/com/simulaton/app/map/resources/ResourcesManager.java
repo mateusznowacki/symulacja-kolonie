@@ -9,13 +9,31 @@ import java.util.Map;
 
 import static com.simulaton.app.map.resources.ResourceTypes.*;
 
+/**
+ * The type Resources manager.
+ */
 public class ResourcesManager {
+    /**
+     * The Updated colonies.
+     */
     ArrayList<Colony> updatedColonies = new ArrayList<>();
 
+    /**
+     * Gets updated colonies.
+     *
+     * @return the updated colonies
+     */
     public ArrayList<Colony> getUpdatedColonies() {
         return updatedColonies;
     }
 
+    /**
+     * Add resources array list.
+     *
+     * @param resourcesMap the resources map
+     * @param positionsMap the positions map
+     * @return the array list
+     */
     public ArrayList<Colony> addResources(HashMap<Position, ResourceTypes> resourcesMap, HashMap<Position, Colony> positionsMap) {
 
         for (Map.Entry<Position, ResourceTypes> resourceEntry : resourcesMap.entrySet()) {
@@ -43,17 +61,19 @@ public class ResourcesManager {
 
                 // Aktualizacja surowca i ilości w kolonii
                 colony.getResourceCounts().put(resource, resourceCount);
-
                 updatedColonies.add(colony);
-
-
-              //  System.out.println("Zaktualizowano surowiec w kolonii: " + colony.getName() + " " + resource + ", ilosc: " + resourceCount);
             }
         }
-
         return updatedColonies;
     }
 
+    /**
+     * Recive resources array list.
+     *
+     * @param colonies the colonies
+     * @param colony   the colony
+     * @return the array list
+     */
     public static ArrayList<Colony> reciveResources(ArrayList<Colony> colonies, Colony colony) {
         for (int i = 0; i < colonies.size(); i++) {
             if (colonies.get(i).getName().equals(colony.getName())) {
@@ -66,6 +86,13 @@ public class ResourcesManager {
         return colonies;
     }
 
+    /**
+     * Spend resources array list.
+     *
+     * @param colonies the colonies
+     * @param colony   the colony
+     * @return the array list
+     */
     public static ArrayList<Colony> spendResources(ArrayList<Colony> colonies, Colony colony) {
         for (int i = 0; i < colonies.size(); i++) {
             if (colonies.get(i).getName().equals(colony.getName())) {

@@ -3,31 +3,20 @@ package com.simulaton.app.map.position;
 import java.util.Objects;
 
 /**
- * Class Position
+ * The type Position.
  */
-
 public class Position {
     private int x;
     private int y;
 
+    /**
+     * Instantiates a new Position.
+     *
+     * @param x the x
+     * @param y the y
+     */
     public Position(int x, int y) {
         this.x = x;
-        this.y = y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
         this.y = y;
     }
 

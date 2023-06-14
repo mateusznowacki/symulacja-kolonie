@@ -11,10 +11,21 @@ import java.util.Random;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
 
+/**
+ * The type Colony battle.
+ */
 public class ColonyBattle {
+
     Colony winningColony;
     Colony losingColony;
 
+    /**
+     * Colony battle current simulation state.
+     *
+     * @param positionsMap the positions map
+     * @param colonies     the colonies
+     * @return the current simulation state
+     */
     public CurrentSimulationState colonyBattle(HashMap<Position, Colony> positionsMap, ArrayList<Colony> colonies) {
         ArrayList<Colony> fightingColonies;
         ArrayList<Position> fightingColoniesPositions;

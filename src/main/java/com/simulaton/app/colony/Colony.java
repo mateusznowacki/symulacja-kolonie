@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 
 /**
- * Represents colony's attributes, properties, methods
+ * The type Colony.
  */
 public class Colony extends Unit {
 
@@ -16,37 +16,45 @@ public class Colony extends Unit {
     private HashMap<ResourceTypes, Integer> resourceCounts;
 
 
-
+    /**
+     * Gets battle wins.
+     *
+     * @return the battle wins
+     */
     public int getBattleWins() {
         return battleWins;
     }
 
+    /**
+     * Sets battle wins.
+     *
+     * @param battleWins the battle wins
+     */
     public void setBattleWins(int battleWins) {
         this.battleWins = battleWins;
     }
 
     private int battleWins = 0;
 
+    /**
+     * Gets resource counts.
+     *
+     * @return the resource counts
+     */
     public HashMap<ResourceTypes, Integer> getResourceCounts() {
         return resourceCounts;
     }
 
-    public void setResourceCounts(HashMap<ResourceTypes, Integer> resourceCounts) {
-        this.resourceCounts = resourceCounts;
-    }
-
-
-
 
     /**
-     * colony constructor
+     * Instantiates a new Colony.
      *
-     * @param name            colony name
-     * @param attackStrength  attack strenght
-     * @param defenseStrength defense strenght
-     * @param economyStrength economy strenght
-     * @param population      population size
-     * @param armySize        army size
+     * @param name            the name
+     * @param attackStrength  the attack strength
+     * @param defenseStrength the defense strength
+     * @param economyStrength the economy strength
+     * @param population      the population
+     * @param armySize        the army size
      */
     public Colony(String name, int attackStrength, int defenseStrength, int economyStrength, int population, int armySize) {
         super(name, population, armySize);
@@ -57,53 +65,31 @@ public class Colony extends Unit {
         resourceCounts = new HashMap<>();
     }
 
-
     /**
+     * Gets attack strength.
      *
      * @return colony name
      */
-
-    //public String getName() {
-    //     return name;
-    // }
-
-    /**
-     * @return colony attaack strenght
-     */
-
     public int getAttackStrength() {
         return attackStrength;
     }
 
     /**
-     * @return colony defence strenght
+     * Gets defense strength.
+     *
+     * @return the defense strength
      */
-
     public int getDefenseStrength() {
         return defenseStrength;
     }
 
     /**
-     * @return colony defence strenght
+     * Gets economy strength.
+     *
+     * @return the economy strength
      */
-
     public int getEconomyStrength() {
         return economyStrength;
     }
 
-    /**
-     *
-     * @return colony population
-     */
-    //  public int getPopulation() {
-    //    return population;
-    //  }
-
-    /**
-     *
-     * @return army size
-     */
-    // public int getArmySize() {
-    //      return armySize;
-    // }
 }

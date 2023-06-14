@@ -14,12 +14,21 @@ import java.util.Scanner;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
 
+/**
+ * The type Simulation.
+ */
 public class Simulation implements SetSimulationParameters {
+    /**
+     * The Current simulation state.
+     */
     CurrentSimulationState currentSimulationState = new CurrentSimulationState();
     private int mapSize;
     private int numberOfColonies;
     private int numberOfIterations;
 
+    /**
+     * Initialize simulation objects.
+     */
     public void initializeSimulationObjects() {
 
         mapSize = setMapSize();
@@ -53,6 +62,9 @@ public class Simulation implements SetSimulationParameters {
 
     }
 
+    /**
+     * Run simulation.
+     */
     public void runSimulation() {
         ColonyBattle colonyBattle = new ColonyBattle();
         for (int i = 0; i < numberOfIterations; i++) {
@@ -61,6 +73,12 @@ public class Simulation implements SetSimulationParameters {
         printSimulationResults(currentSimulationState, numberOfIterations);
     }
 
+    /**
+     * Print simulation results.
+     *
+     * @param currentState       the current state
+     * @param numberOfIterations the number of iterations
+     */
     public void printSimulationResults(CurrentSimulationState currentState, int numberOfIterations) {
         Colony winnerColony = null;
         int battleWins = 0;

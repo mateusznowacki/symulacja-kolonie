@@ -6,7 +6,16 @@ import java.util.Random;
 import static com.simulaton.filereader.FileReader.getBotColonyName;
 
 
+/**
+ * The type Colony factory.
+ */
 public class ColonyFactory {
+    /**
+     * Create colony array list.
+     *
+     * @param numberofColonies the numberof colonies
+     * @return the array list
+     */
     public ArrayList<Colony> createColony(int numberofColonies) {
         String name;
         int attackStrength;
