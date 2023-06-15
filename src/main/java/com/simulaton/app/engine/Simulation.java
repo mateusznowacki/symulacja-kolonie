@@ -25,7 +25,6 @@ public class Simulation {
         this.currentSimulationState = currentSimulationState;
     }
 
-
     /**
      * Run simulation.
      */
@@ -35,7 +34,7 @@ public class Simulation {
         numberOfIterations = currentSimulationState.getNumberOfIterations();
 
         for (int i = 0; i < numberOfIterations; i++) {
-            currentSimulationState = colonyBattle.colonyBattle(currentSimulationState.getColonies(),currentSimulationState.getPositionsMap());
+            currentSimulationState = colonyBattle.colonyBattle(currentSimulationState.getColonies(), currentSimulationState.getPositionsMap());
         }
         printSimulationResults(currentSimulationState, numberOfIterations);
 
@@ -61,6 +60,5 @@ public class Simulation {
                 + " wygrywajac razem " + colorize(String.valueOf(winnerColony.getBattleWins()), Attribute.TEXT_COLOR(90, 225, 22)) + " bitw z " +
                 colorize(String.valueOf(numberOfIterations), Attribute.TEXT_COLOR(90, 225, 22)));
     }
-
 
 }
