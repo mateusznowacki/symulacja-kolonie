@@ -28,7 +28,8 @@ public class ColonyBattle {
     /**
      * Colony battle current simulation state.
      *
-     * @param currentState the current state
+     * @param colonies     the colonies
+     * @param positionsMap the positions map
      * @return the current simulation state
      */
     public CurrentSimulationState colonyBattle(ArrayList<Colony> colonies, HashMap<Position, Colony> positionsMap) {
