@@ -5,6 +5,7 @@ import com.simulaton.app.colony.Colony;
 import com.simulaton.app.map.position.Position;
 import com.simulaton.app.map.resources.ResourcesManager;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -104,8 +105,8 @@ public class ColonyBattle {
         if (attackingColonyPoints >= defendingColonyPoints) {
             positionsMap.put(defendingColonyPosition, attackingColony);
             attackingColony.setBattleWins(attackingColony.getBattleWins() + 1);
-            currentState.setColonies(ResourcesManager.reciveResources(colonies, attackingColony));
-            currentState.setColonies(ResourcesManager.spendResources(colonies, defendingColony));
+            currentState.setColonies(resourcesManager.reciveResources(colonies, attackingColony));
+            currentState.setColonies(resourcesManager.spendResources(colonies, defendingColony));
             winningColony = attackingColony;
             losingColony = defendingColony;
 
@@ -122,8 +123,8 @@ public class ColonyBattle {
         } else {
             positionsMap.put(attackingColonyPosition, defendingColony);
             defendingColony.setBattleWins(defendingColony.getBattleWins() + 1);
-            currentState.setColonies(ResourcesManager.reciveResources(colonies, defendingColony));
-            currentState.setColonies(ResourcesManager.spendResources(colonies, attackingColony));
+            currentState.setColonies(resourcesManager.reciveResources(colonies, defendingColony));
+            currentState.setColonies(resourcesManager.spendResources(colonies, attackingColony));
             winningColony = defendingColony;
             losingColony = attackingColony;
 

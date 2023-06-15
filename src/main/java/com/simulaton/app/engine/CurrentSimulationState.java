@@ -16,6 +16,9 @@ public class CurrentSimulationState {
     private HashMap<Position, ResourceTypes> resourcesMap;
     private ArrayList<Colony> colonies;
     private ArrayList<Position> positions;
+    private int mapSize;
+    private int numberOfColonies;
+    private int numberOfIterations;
 
     /**
      * Gets positions.
@@ -108,4 +111,27 @@ public class CurrentSimulationState {
         this.resourcesMap = resourcesMap;
     }
 
+    public int getMapSize() {
+        return mapSize;
+    }
+
+    public void setMapSize(int mapSize) {
+        this.mapSize = mapSize;
+    }
+
+    public int getNumberOfColonies() {
+        return numberOfColonies;
+    }
+
+    public void setNumberOfColonies(int numberOfColonies) {
+        this.numberOfColonies = numberOfColonies;
+    }
+
+    public int getNumberOfIterations() {
+        return numberOfIterations;
+    }
+
+    public void setNumberOfIterations(int numberOfIterations) {
+        this.numberOfIterations = numberOfIterations;
+    }
 }

@@ -11,9 +11,12 @@ public class Main {
      */
     public static void main(String[] args) {
 
+        InitializeSimulation initSimulation = new InitializeSimulation();
         Simulation simulation = new Simulation();
-        simulation.initializeSimulationObjects();
+
+        simulation.setCurrentSimulationState(initSimulation.initializeSimulationObjects());
         simulation.runSimulation();
+
 
     }
 }
