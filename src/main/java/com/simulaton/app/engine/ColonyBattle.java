@@ -23,19 +23,16 @@ public class ColonyBattle {
     /**
      * Colony battle current simulation state.
      *
-     * @param positionsMap the positions map
-     * @param colonies     the colonies
      * @return the current simulation state
      */
-    public CurrentSimulationState colonyBattle(HashMap<Position, Colony> positionsMap, ArrayList<Colony> colonies) {
+    public CurrentSimulationState colonyBattle(CurrentSimulationState currentState) {
         ArrayList<Colony> fightingColonies;
         ArrayList<Position> fightingColoniesPositions;
-        CurrentSimulationState currentState;
 
-        fightingColonies = pickFightingColonies(colonies);
-        fightingColoniesPositions = findFightingColoniesPositions(fightingColonies, positionsMap);
+        fightingColonies = pickFightingColonies(currentState.getColonies());
+        fightingColoniesPositions = findFightingColoniesPositions(fightingColonies, currentState.getPositionsMap());
 
-        currentState = fightBetweenColonies(fightingColonies, fightingColoniesPositions, positionsMap, colonies);
+        currentState = fightBetweenColonies(fightingColonies, fightingColoniesPositions, currentState);
         printBattleResults(winningColony, losingColony);
 
         return currentState;
@@ -74,14 +71,15 @@ public class ColonyBattle {
         return positions;
     }
 
-    private CurrentSimulationState fightBetweenColonies(ArrayList<Colony> fightingcolonies, ArrayList<Position> positions, HashMap<Position, Colony> positionsMap, ArrayList<Colony> colonies) {
+    private CurrentSimulationState fightBetweenColonies(ArrayList<Colony> fightingcolonies, ArrayList<Position> positions,CurrentSimulationState currentState ) {
         int attackingColonyPoints = 0;
         int defendingColonyPoints = 0;
         Colony attackingColony = fightingcolonies.get(0);
         Colony defendingColony = fightingcolonies.get(1);
         Position attackingColonyPosition = positions.get(0);
         Position defendingColonyPosition = positions.get(1);
-        CurrentSimulationState currentState = new CurrentSimulationState();
+        HashMap<Position, Colony> positionsMap = currentState.getPositionsMap();
+        ArrayList<Colony> colonies = currentState.getColonies();
         ResourcesManager resourcesManager = new ResourcesManager();
 
         if ((attackingColony.getArmySize() * attackingColony.getAttackStrength()) >= (defendingColony.getArmySize() * defendingColony.getDefenseStrength())) {

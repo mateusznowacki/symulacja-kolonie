@@ -23,8 +23,8 @@ public class Simulation {
      */
     public void setCurrentSimulationState(CurrentSimulationState currentSimulationState) {
         this.currentSimulationState = currentSimulationState;
-
     }
+
 
     /**
      * Run simulation.
@@ -35,9 +35,10 @@ public class Simulation {
         numberOfIterations = currentSimulationState.getNumberOfIterations();
 
         for (int i = 0; i < numberOfIterations; i++) {
-            currentSimulationState = colonyBattle.colonyBattle(currentSimulationState.getPositionsMap(), currentSimulationState.getColonies());
+            currentSimulationState = colonyBattle.colonyBattle(currentSimulationState);
         }
         printSimulationResults(currentSimulationState, numberOfIterations);
+     //   System.out.println(currentSimulationState.getNumberOfIterations());
     }
 
     /**
