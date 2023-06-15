@@ -35,10 +35,10 @@ public class Simulation {
         numberOfIterations = currentSimulationState.getNumberOfIterations();
 
         for (int i = 0; i < numberOfIterations; i++) {
-            currentSimulationState = colonyBattle.colonyBattle(currentSimulationState);
+            currentSimulationState = colonyBattle.colonyBattle(currentSimulationState.getColonies(),currentSimulationState.getPositionsMap());
         }
         printSimulationResults(currentSimulationState, numberOfIterations);
-     //   System.out.println(currentSimulationState.getNumberOfIterations());
+
     }
 
     /**
