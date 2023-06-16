@@ -69,10 +69,24 @@ public class ResourcesManager {
     public static ArrayList<Colony> reciveResources(ArrayList<Colony> colonies, Colony colony) {
         for (int i = 0; i < colonies.size(); i++) {
             if (colonies.get(i).getName().equals(colony.getName())) {
-                colonies.get(i).getResourceCounts().put(WOOD, colonies.get(i).getResourceCounts().get(WOOD) + 10);
-                colonies.get(i).getResourceCounts().put(FOOD, colonies.get(i).getResourceCounts().get(FOOD) + 5);
-                colonies.get(i).getResourceCounts().put(IRON, colonies.get(i).getResourceCounts().get(IRON) + 5);
-                colonies.get(i).getResourceCounts().put(STONE, colonies.get(i).getResourceCounts().get(STONE) + 10);
+                HashMap<ResourceTypes, Integer> resourceCounts = colonies.get(i).getResourceCounts();
+                Integer woodCount = resourceCounts.get(WOOD);
+                Integer foodCount = resourceCounts.get(FOOD);
+                Integer ironCount = resourceCounts.get(IRON);
+                Integer stoneCount = resourceCounts.get(STONE);
+
+                if (woodCount != null) {
+                    resourceCounts.put(WOOD, woodCount + 10);
+                }
+                if (foodCount != null) {
+                    resourceCounts.put(FOOD, foodCount + 5);
+                }
+                if (ironCount != null) {
+                    resourceCounts.put(IRON, ironCount + 5);
+                }
+                if (stoneCount != null) {
+                    resourceCounts.put(STONE, stoneCount + 10);
+                }
             }
         }
         return colonies;
@@ -88,10 +102,27 @@ public class ResourcesManager {
     public static ArrayList<Colony> spendResources(ArrayList<Colony> colonies, Colony colony) {
         for (int i = 0; i < colonies.size(); i++) {
             if (colonies.get(i).getName().equals(colony.getName())) {
-                colonies.get(i).getResourceCounts().put(WOOD, colonies.get(i).getResourceCounts().get(WOOD) - 10);
-                colonies.get(i).getResourceCounts().put(FOOD, colonies.get(i).getResourceCounts().get(FOOD) - 5);
-                colonies.get(i).getResourceCounts().put(IRON, colonies.get(i).getResourceCounts().get(IRON) - 5);
-                colonies.get(i).getResourceCounts().put(STONE, colonies.get(i).getResourceCounts().get(STONE) - 10);
+                HashMap<ResourceTypes, Integer> resourceCounts = colonies.get(i).getResourceCounts();
+                Integer woodCount = resourceCounts.get(WOOD);
+                Integer stoneCount = resourceCounts.get(STONE);
+                Integer foodCount = resourceCounts.get(FOOD);
+                Integer ironCount = resourceCounts.get(IRON);
+
+                if (woodCount != null) {
+                    resourceCounts.put(WOOD, woodCount - 10);
+                }
+
+                if (stoneCount != null) {
+                    resourceCounts.put(STONE, stoneCount - 10);
+                }
+
+                if (foodCount != null) {
+                    resourceCounts.put(FOOD, foodCount - 5);
+                }
+
+                if (ironCount != null) {
+                    resourceCounts.put(IRON, ironCount - 5);
+                }
             }
         }
         return colonies;
