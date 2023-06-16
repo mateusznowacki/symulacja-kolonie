@@ -44,7 +44,7 @@ public class InitializeSimulation {
         return currentSimulationState;
     }
 
-    public int chooseMapSize() {
+    private int chooseMapSize() {
         Scanner scanner = new Scanner(System.in);
         int mapSize = 10;
         boolean uncorrectSize = true;
@@ -60,7 +60,7 @@ public class InitializeSimulation {
         return mapSize;
     }
 
-    public int chooseNumberOfColonies() {
+    private int chooseNumberOfColonies() {
         Scanner scanner = new Scanner(System.in);
         int numberOfColonies = 10;
         boolean uncorrectSize = true;
@@ -76,7 +76,7 @@ public class InitializeSimulation {
         return numberOfColonies;
     }
 
-    public int chooseNumberOfIterations() {
+    private int chooseNumberOfIterations() {
         Scanner scanner = new Scanner(System.in);
         int numberOfIterations = 10;
         boolean uncorrectSize = true;

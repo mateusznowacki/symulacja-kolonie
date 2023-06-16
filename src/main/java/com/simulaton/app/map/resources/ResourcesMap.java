@@ -11,7 +11,7 @@ import java.util.Random;
  * The type Resources map.
  */
 public class ResourcesMap {
-    private final HashMap<Position, ResourceTypes> resourcesMap = new HashMap<>();
+    private HashMap<Position, ResourceTypes> resourcesMap = new HashMap<>();
 
     /**
      * Distribute resources randomly hash map.

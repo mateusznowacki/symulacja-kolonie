@@ -10,11 +10,11 @@ import java.util.HashMap;
  */
 public class Colony extends Unit {
 
-    private final int attackStrength;
-    private final int defenseStrength;
-    private final int economyStrength;
+    private int attackStrength;
+    private int defenseStrength;
+    private int economyStrength;
     private int battleWins = 0;
-    private final HashMap<ResourceTypes, Integer> resourceCounts;
+    private HashMap<ResourceTypes, Integer> resourceCounts;
 
     /**
      * Gets battle wins.
@@ -87,5 +87,32 @@ public class Colony extends Unit {
      */
     public int getEconomyStrength() {
         return economyStrength;
+    }
+
+    /**
+     * Sets attack strength.
+     *
+     * @param attackStrength the attack strength
+     */
+    public void setAttackStrength(int attackStrength) {
+        this.attackStrength = attackStrength;
+    }
+
+    /**
+     * Sets defense strength.
+     *
+     * @param defenseStrength the defense strength
+     */
+    public void setDefenseStrength(int defenseStrength) {
+        this.defenseStrength = defenseStrength;
+    }
+
+    /**
+     * Sets economy strength.
+     *
+     * @param economyStrength the economy strength
+     */
+    public void setEconomyStrength(int economyStrength) {
+        this.economyStrength = economyStrength;
     }
 }

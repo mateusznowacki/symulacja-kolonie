@@ -16,7 +16,7 @@ public class ResourcesManager {
     /**
      * The Updated colonies.
      */
-    ArrayList<Colony> updatedColonies = new ArrayList<>();
+    private ArrayList<Colony> updatedColonies = new ArrayList<>();
 
     /**
      * Gets updated colonies.

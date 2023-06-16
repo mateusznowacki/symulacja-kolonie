@@ -11,7 +11,7 @@ import java.util.Random;
  * The type Random position assinger.
  */
 public class RandomPositionAssinger {
-    private final HashMap<Position, Colony> positionsMap = new HashMap<>();
+    private HashMap<Position, Colony> positionsMap = new HashMap<>();
 
     /**
      * Distribute positions randomly hash map.

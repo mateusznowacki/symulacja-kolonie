@@ -3,13 +3,16 @@ package com.simulaton.app.engine;
 import com.diogonunes.jcolor.Attribute;
 import com.simulaton.app.colony.Colony;
 import com.simulaton.app.map.position.Position;
-import com.simulaton.app.map.resources.ResourcesManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
+import static com.simulaton.app.colony.StrenghtPointsManager.loseStrenghtPoints;
+import static com.simulaton.app.colony.StrenghtPointsManager.reciveStrenghtPoints;
+import static com.simulaton.app.map.resources.ResourcesManager.reciveResources;
+import static com.simulaton.app.map.resources.ResourcesManager.spendResources;
 
 /**
  * The type Colony battle.
@@ -19,11 +22,11 @@ public class ColonyBattle {
     /**
      * The Winning colony.
      */
-    Colony winningColony;
+    private Colony winningColony;
     /**
      * The Losing colony.
      */
-    Colony losingColony;
+    private Colony losingColony;
 
     /**
      * Colony battle current simulation state.
@@ -40,7 +43,7 @@ public class ColonyBattle {
         fightingColonies = pickFightingColonies(colonies);
         fightingColoniesPositions = findFightingColoniesPositions(fightingColonies, positionsMap);
 
-        currentState = fightBetweenColonies(fightingColonies, fightingColoniesPositions,positionsMap,colonies);
+        currentState = fightBetweenColonies(fightingColonies, fightingColoniesPositions, positionsMap, colonies);
         printBattleResults(winningColony, losingColony);
 
         return currentState;
@@ -86,7 +89,6 @@ public class ColonyBattle {
         Colony defendingColony = fightingcolonies.get(1);
         Position attackingColonyPosition = positions.get(0);
         Position defendingColonyPosition = positions.get(1);
-        ResourcesManager resourcesManager = new ResourcesManager();
         CurrentSimulationState currentState = new CurrentSimulationState();
 
         if ((attackingColony.getArmySize() * attackingColony.getAttackStrength()) >= (defendingColony.getArmySize() * defendingColony.getDefenseStrength())) {
@@ -110,8 +112,10 @@ public class ColonyBattle {
         if (attackingColonyPoints >= defendingColonyPoints) {
             positionsMap.put(defendingColonyPosition, attackingColony);
             attackingColony.setBattleWins(attackingColony.getBattleWins() + 1);
-            currentState.setColonies(resourcesManager.reciveResources(colonies, attackingColony));
-            currentState.setColonies(resourcesManager.spendResources(colonies, defendingColony));
+            currentState.setColonies(reciveResources(colonies, attackingColony));
+            currentState.setColonies(spendResources(colonies, defendingColony));
+            currentState.setColonies(reciveStrenghtPoints(colonies, attackingColony));
+            currentState.setColonies(loseStrenghtPoints(colonies, defendingColony));
             winningColony = attackingColony;
             losingColony = defendingColony;
 
@@ -128,8 +132,10 @@ public class ColonyBattle {
         } else {
             positionsMap.put(attackingColonyPosition, defendingColony);
             defendingColony.setBattleWins(defendingColony.getBattleWins() + 1);
-            currentState.setColonies(resourcesManager.reciveResources(colonies, defendingColony));
-            currentState.setColonies(resourcesManager.spendResources(colonies, attackingColony));
+            currentState.setColonies(reciveResources(colonies, defendingColony));
+            currentState.setColonies(spendResources(colonies, attackingColony));
+            currentState.setColonies(reciveStrenghtPoints(colonies, defendingColony));
+            currentState.setColonies(loseStrenghtPoints(colonies, attackingColony));
             winningColony = defendingColony;
             losingColony = attackingColony;
 

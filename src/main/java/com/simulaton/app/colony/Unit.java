@@ -7,8 +7,8 @@ import java.util.Objects;
  */
 public abstract class Unit {
     private final String name;
-    private final int population;
-    private final int armySize;
+    private int population;
+    private int armySize;
 
     /**
      * Gets name.

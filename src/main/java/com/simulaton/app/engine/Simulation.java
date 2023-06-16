@@ -46,7 +46,7 @@ public class Simulation {
      * @param currentState       the current state
      * @param numberOfIterations the number of iterations
      */
-    public void printSimulationResults(CurrentSimulationState currentState, int numberOfIterations) {
+    private void printSimulationResults(CurrentSimulationState currentState, int numberOfIterations) {
         Colony winnerColony = null;
         int battleWins = 0;
 
