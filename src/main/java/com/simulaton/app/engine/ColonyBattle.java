@@ -17,7 +17,7 @@ import static com.simulaton.app.map.resources.ResourcesManager.spendResources;
 /**
  * The type Colony battle.
  */
-public class ColonyBattle {
+public class ColonyBattle implements BattleResolver {
 
     /**
      * The Winning colony.
@@ -27,6 +27,7 @@ public class ColonyBattle {
      * The Losing colony.
      */
     private Colony losingColony;
+
 
     /**
      * Colony battle current simulation state.
@@ -83,73 +84,98 @@ public class ColonyBattle {
     }
 
     private CurrentSimulationState fightBetweenColonies(ArrayList<Colony> fightingcolonies, ArrayList<Position> positions, HashMap<Position, Colony> positionsMap, ArrayList<Colony> colonies) {
-        int attackingColonyPoints = 0;
-        int defendingColonyPoints = 0;
+        ArrayList<Colony> fightingColonies = new ArrayList<>();
         Colony attackingColony = fightingcolonies.get(0);
         Colony defendingColony = fightingcolonies.get(1);
-        Position attackingColonyPosition = positions.get(0);
-        Position defendingColonyPosition = positions.get(1);
+        Position losingColonyPosition;
         CurrentSimulationState currentState = new CurrentSimulationState();
+        Random random = new Random();
 
-        if ((attackingColony.getArmySize() * attackingColony.getAttackStrength()) >= (defendingColony.getArmySize() * defendingColony.getDefenseStrength())) {
-            attackingColonyPoints += 1;
-        } else {
-            defendingColonyPoints += 1;
-        }
-        //defence
-        if ((attackingColony.getArmySize() * attackingColony.getDefenseStrength()) >= (defendingColony.getArmySize() * defendingColony.getAttackStrength())) {
-            attackingColonyPoints += 1;
-        } else {
-            defendingColonyPoints += 1;
-        }
-        //economy
-        if ((attackingColony.getEconomyStrength() * attackingColony.getPopulation()) >= (defendingColony.getEconomyStrength() * defendingColony.getPopulation())) {
-            attackingColonyPoints += 1;
-        } else {
-            defendingColonyPoints += 1;
-        }
+        switch (random.nextInt(8)) {
+            case 1: {
+                fightingColonies = compareResources(attackingColony, defendingColony);
+                winningColony = fightingColonies.get(0);
+                losingColony = fightingColonies.get(1);
 
-        if (attackingColonyPoints >= defendingColonyPoints) {
-            positionsMap.put(defendingColonyPosition, attackingColony);
-            attackingColony.setBattleWins(attackingColony.getBattleWins() + 1);
-            currentState.setColonies(reciveResources(colonies, attackingColony));
-            currentState.setColonies(spendResources(colonies, defendingColony));
-            currentState.setColonies(reciveStrenghtPoints(colonies, attackingColony));
-            currentState.setColonies(loseStrenghtPoints(colonies, defendingColony));
-            winningColony = attackingColony;
-            losingColony = defendingColony;
-
-            for (int i = 0; i < colonies.size(); i++) {
-                if (colonies.get(i).getName().equals(attackingColony.getName())) {
-                    colonies.remove(i);
-                    colonies.add(attackingColony);
-                }
             }
-            currentState.setColonies(colonies);
-            currentState.setPositionsMap(positionsMap);
-            return currentState;
-
-        } else {
-            positionsMap.put(attackingColonyPosition, defendingColony);
-            defendingColony.setBattleWins(defendingColony.getBattleWins() + 1);
-            currentState.setColonies(reciveResources(colonies, defendingColony));
-            currentState.setColonies(spendResources(colonies, attackingColony));
-            currentState.setColonies(reciveStrenghtPoints(colonies, defendingColony));
-            currentState.setColonies(loseStrenghtPoints(colonies, attackingColony));
-            winningColony = defendingColony;
-            losingColony = attackingColony;
-
-            for (int i = 0; i < colonies.size(); i++) {
-                if (colonies.get(i).getName().equals(defendingColony.getName())) {
-                    colonies.remove(i);
-                    colonies.add(defendingColony);
-                }
+            break;
+            case 2: {
+                fightingColonies = compareStrenghtPoints(attackingColony, defendingColony);
+                winningColony = fightingColonies.get(0);
+                losingColony = fightingColonies.get(1);
             }
-            currentState.setColonies(colonies);
-            currentState.setPositionsMap(positionsMap);
-            return currentState;
+            break;
+            case 3: {
+                fightingColonies = compareAllStats(attackingColony, defendingColony);
+                winningColony = fightingColonies.get(0);
+                losingColony = fightingColonies.get(1);
+            }
+            break;
+            case 4: {
+                fightingColonies = compareArmySize(attackingColony, defendingColony);
+                winningColony = fightingColonies.get(0);
+                losingColony = fightingColonies.get(1);
+            }
+            break;
+            case 5: {
+                fightingColonies = compareEconomyLargeness(attackingColony, defendingColony);
+                winningColony = fightingColonies.get(0);
+                losingColony = fightingColonies.get(1);
+            }
+            break;
+            case 6: {
+                fightingColonies = compareDefencePower(attackingColony, defendingColony);
+                winningColony = fightingColonies.get(0);
+                losingColony = fightingColonies.get(1);
+
+            }
+            break;
+            case 7: {
+                fightingColonies = comparePopulation(attackingColony, defendingColony);
+                winningColony = fightingColonies.get(0);
+                losingColony = fightingColonies.get(1);
+            }
+            break;
+            case 8: {
+                fightingColonies = compareAttackPower(attackingColony, defendingColony);
+                winningColony = fightingColonies.get(0);
+                losingColony = fightingColonies.get(1);
+            }
+            break;
         }
+        losingColonyPosition = getLosingColonyPosition(positionsMap, positions, losingColony);
+
+
+        positionsMap.put(losingColonyPosition, winningColony);//////////////////////////////////////
+        winningColony.setBattleWins(winningColony.getBattleWins() + 1);
+        currentState.setColonies(reciveResources(colonies, winningColony));
+        currentState.setColonies(spendResources(colonies, losingColony));
+        currentState.setColonies(reciveStrenghtPoints(colonies, winningColony));
+        currentState.setColonies(loseStrenghtPoints(colonies, losingColony));
+
+        for (int i = 0; i < colonies.size(); i++) {
+            if (colonies.get(i).getName().equals(winningColony.getName())) {
+                colonies.remove(i);
+                colonies.add(winningColony);
+            }
+        }
+        currentState.setColonies(colonies);
+        currentState.setPositionsMap(positionsMap);
+        return currentState;
+
     }
+
+    private Position getLosingColonyPosition(HashMap<Position, Colony> positionsMap, ArrayList<Position> positions, Colony losingColony) {
+        Position losingColonyPosition = null ;
+
+        for (int i = 0; i < positions.size(); i++) {
+            if (positionsMap.containsKey(positions.get(i)) && positionsMap.get(positions.get(i)).equals(losingColony.getName())) {
+                losingColonyPosition = positions.get(i);
+            }
+        }
+        return losingColonyPosition;
+    }
+
 
     private void printBattleResults(Colony winningColony, Colony losingColony) {
         System.out.println("Wygrala kolonia " + colorize(winningColony.getName(), Attribute.TEXT_COLOR(90, 225, 22)) + " z wynikiem " +
