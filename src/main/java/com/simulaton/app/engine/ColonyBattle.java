@@ -84,7 +84,7 @@ public class ColonyBattle implements BattleResolver {
     }
 
     private CurrentSimulationState fightBetweenColonies(ArrayList<Colony> fightingcolonies, ArrayList<Position> positions, HashMap<Position, Colony> positionsMap, ArrayList<Colony> colonies) {
-        ArrayList<Colony> fightingColonies = new ArrayList<>();
+        ArrayList<Colony> fightingColonies;
         Colony attackingColony = fightingcolonies.get(0);
         Colony defendingColony = fightingcolonies.get(1);
         Position losingColonyPosition;
@@ -143,11 +143,11 @@ public class ColonyBattle implements BattleResolver {
             }
             break;
         }
+
         losingColonyPosition = getLosingColonyPosition(positionsMap, positions, losingColony);
-
-
-        positionsMap.put(losingColonyPosition, winningColony);//////////////////////////////////////
+        positionsMap.put(losingColonyPosition, winningColony);
         winningColony.setBattleWins(winningColony.getBattleWins() + 1);
+
         currentState.setColonies(reciveResources(colonies, winningColony));
         currentState.setColonies(spendResources(colonies, losingColony));
         currentState.setColonies(reciveStrenghtPoints(colonies, winningColony));
